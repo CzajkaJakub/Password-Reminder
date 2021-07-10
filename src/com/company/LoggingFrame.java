@@ -3,8 +3,7 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoggingFrame extends JFrame implements ImagesFiles, Labels, TextFields, Buttons {
-
+public class LoggingFrame extends JFrame implements ImagesFiles, LoggingPanels, TextFields, Buttons {
     LoggingFrame(){
         setPanels();
         frameSettings();
@@ -12,14 +11,13 @@ public class LoggingFrame extends JFrame implements ImagesFiles, Labels, TextFie
 
     private void frameSettings(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
-        this.setMinimumSize(new Dimension(750, 500));
-        this.setLayout(new GridLayout(3, 1, 0, 0));
+        this.setMinimumSize(new Dimension(750, 750));
+        this.setLayout(new BorderLayout());
         this.setResizable(true);
         this.setTitle("Password Reminder");
-        this.add(northLogPane);
-        this.add(centerLogPane);
-        this.add(southLogPane);
+        this.add(northLogPane, BorderLayout.NORTH);
+        this.add(centerLogPane, BorderLayout.CENTER);
+        this.add(southLogPane, BorderLayout.SOUTH);
         this.setVisible(true);
     }
 
@@ -30,23 +28,28 @@ public class LoggingFrame extends JFrame implements ImagesFiles, Labels, TextFie
     }
 
     private void setNorthPanel(){
-        northLogPane.setIcon(passwordReminderImage);
+        northLogPane.add(new ImageLabel(passwordReminderImage));
     }
 
     private void setCenterPanel(){
         centerLogPane.add(loginField);
         centerLogPane.add(passwordField);
-
     }
 
     private void setSouthPanel(){
         logInButton.addActionListener(e->tryToLogin());
         southLogPane.add(logInButton);
+        registerButton.addActionListener(e->registerNewUser());
+        southLogPane.add(registerButton);
     }
 
     private void tryToLogin(){
         String login = loginField.getText();
         String password = passwordField.getText();
-        Main.logInSystem(login, password);
+        SystemActions.logInSystem(login, password);
+    }
+
+    private void registerNewUser(){
+        SystemActions.registerNewUser();
     }
 }
