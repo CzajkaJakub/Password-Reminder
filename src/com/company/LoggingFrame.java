@@ -3,7 +3,8 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoggingFrame extends JFrame implements ImagesFiles, LoggingPanels, TextFields, Buttons {
+public class LoggingFrame extends JFrame implements LoginFrameElements {
+
     LoggingFrame(){
         setPanels();
         frameSettings();
@@ -46,7 +47,7 @@ public class LoggingFrame extends JFrame implements ImagesFiles, LoggingPanels, 
     private void tryToLogin(){
         String login = loginField.getText();
         String password = passwordField.getText();
-        SystemActions.logInSystem(login, password);
+        SystemActions.logInSystem(Cypher.encrypt(login, EncryptTypes.USER_LOGIN), Cypher.encrypt(password, EncryptTypes.USER_PASSWORD));
     }
 
     private void registerNewUser(){

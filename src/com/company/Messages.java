@@ -2,13 +2,14 @@ package com.company;
 
 import javax.swing.*;
 
+
 public class Messages extends JOptionPane {
     public static String registerInputLogin(){
         String inputLogin = JOptionPane.showInputDialog(null,
                 "Type your login.",
                 "Register",
                 JOptionPane.PLAIN_MESSAGE);
-        return  inputLogin;
+        return  Cypher.encrypt(inputLogin, EncryptTypes.USER_LOGIN);
     }
 
 
@@ -17,7 +18,7 @@ public class Messages extends JOptionPane {
                 "Type your password.",
                 "Register",
                 JOptionPane.PLAIN_MESSAGE);
-        return  inputPassword;
+        return  Cypher.encrypt(inputPassword, EncryptTypes.USER_PASSWORD);
     }
 
 

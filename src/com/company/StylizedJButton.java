@@ -13,6 +13,5 @@ public class StylizedJButton extends JButton {
         this.setIcon(icon);
         this.setBorderPainted(false);
         this.setContentAreaFilled(false);
-
     }
 }
