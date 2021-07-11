@@ -5,8 +5,8 @@ import java.awt.*;
 
 
 public class StylizedJButton extends JButton {
-    public StylizedJButton(ImageIcon icon) {
-        this.setPreferredSize(new Dimension(170, 80));
+    public StylizedJButton(ImageIcon icon, int width, int height) {
+        this.setPreferredSize(new Dimension(width, height));
         this.setFocusable(false);
         this.setBackground(null);
         this.setBorder(null);

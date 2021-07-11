@@ -1,10 +1,10 @@
-package com.company;
+package com.company.loginFrame;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class PasswordField extends JPasswordField {
-    PasswordField(String text){
+public class LoggingField extends JTextField {
+    LoggingField(String text){
         this.setFont(new Font("Consolas", Font.BOLD, 25));
         this.setPreferredSize(new Dimension(300, 70));
         this.setHorizontalAlignment(JTextField.CENTER);
@@ -13,7 +13,5 @@ public class PasswordField extends JPasswordField {
         this.setBackground(Color.BLACK);
         this.setForeground(Color.WHITE);
         this.setCaretColor(Color.WHITE);
-        this.setEchoChar('*');
-
     }
 }

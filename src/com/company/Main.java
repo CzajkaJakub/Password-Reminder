@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.loginFrame.LoggingFrame;
+
 public class Main {
 
     public static LoggingFrame loggingFrame;

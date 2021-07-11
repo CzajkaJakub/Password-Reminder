@@ -1,5 +1,4 @@
-package com.company;
-
+package com.company.encryption;
 
 import java.util.HashMap;
 
@@ -16,14 +15,13 @@ public class Cypher {
     }
 
     private static String encryptData(String textToEncrypt, int key){
-        StringBuilder encryptedText = new StringBuilder(textToEncrypt.length());
+        StringBuilder encryptedText = new StringBuilder();
         for(int i=0; i<textToEncrypt.length();i++){
             char characterToEncrypt = textToEncrypt.charAt(i);
             int valOfCharacterAfterEncryption = (int)characterToEncrypt + key;
-            if(valOfCharacterAfterEncryption>126) valOfCharacterAfterEncryption -= 94;
-            encryptedText.append((char)valOfCharacterAfterEncryption);
+            encryptedText.append(valOfCharacterAfterEncryption);
+            encryptedText.append(".");
         }
-        System.out.println(encryptedText.toString());
         return encryptedText.toString();
     }
 
@@ -35,19 +33,19 @@ public class Cypher {
             keys.put(EncryptTypes.USER_SERVICE_LOGIN, -9);
             keys.put(EncryptTypes.USER_SERVICE_PASSWORD, -11);
         }
-        return encryptData(textToDecrypt, keys.get(type));
+        return decryptData(textToDecrypt, keys.get(type));
     }
 
     private static String decryptData(String textToDecrypt, int key){
-        StringBuilder decryptedText = new StringBuilder(textToDecrypt.length());
-        for(int i=0; i<textToDecrypt.length();i++){
-            char characterToEncrypt = textToDecrypt.charAt(i);
-            int valOfCharacterAfterEncryption = (int)characterToEncrypt + key;
-            if(valOfCharacterAfterEncryption<33) valOfCharacterAfterEncryption += 94;
-            decryptedText.append((char)valOfCharacterAfterEncryption);
-            System.out.println((char)valOfCharacterAfterEncryption);
+        System.out.println(textToDecrypt);
+        String[] encryptedValues = textToDecrypt.split("\\.");
+        StringBuilder encryptedText = new StringBuilder();
+        for (String x : encryptedValues) {
+            int valueOfChar = Integer.parseInt(x) + key;
+            char decryptedChar = (char) valueOfChar;
+            encryptedText.append(decryptedChar);
         }
-        return decryptedText.toString();
+        return encryptedText.toString();
     }
 
 

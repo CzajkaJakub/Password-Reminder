@@ -1,4 +1,4 @@
-package com.company;
+package com.company.encryption;
 
 public enum EncryptTypes {
     USER_LOGIN,

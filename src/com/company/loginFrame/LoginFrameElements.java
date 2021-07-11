@@ -1,4 +1,6 @@
-package com.company;
+package com.company.loginFrame;
+
+import com.company.StylizedJButton;
 
 import javax.swing.*;
 
@@ -14,6 +16,8 @@ public interface LoginFrameElements {
     ImageIcon logInImage = new ImageIcon("src/images/logIn.png");
     ImageIcon registerImage = new ImageIcon("src/images/register.png");
 
-    StylizedJButton logInButton = new StylizedJButton(logInImage);
-    StylizedJButton registerButton = new StylizedJButton(registerImage);
+    StylizedJButton logInButton = new StylizedJButton(logInImage, 140, 64);
+    StylizedJButton registerButton = new StylizedJButton(registerImage, 199, 67);
+
+    ImageIcon programIcon = new ImageIcon("src/images/programIcon.png");
 }

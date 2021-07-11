@@ -1,4 +1,8 @@
-package com.company;
+package com.company.systemActions;
+
+import com.company.Main;
+import com.company.userPanel.UserPanel;
+import com.company.messages.Messages;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,11 +12,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class SystemActions {
+
+    private static UserPanel userPanel;
+
     public static void logInSystem(String login, String password){
         if(searchUserLogin(login)){
             if(searchUserPassword(password, login)) {
                 Main.loggingFrame.dispose();
-                //UserPanel(login, password); zalogowano
+                userPanel = new UserPanel(login, password);
             }else{
                 Messages.wrongPassword();
             }
@@ -29,6 +36,7 @@ public class SystemActions {
         }else{
             password = Messages.registerInputPassword();
             createNewUser(login, password);
+            Messages.accountCreatedMessage();
         }
     }
 
@@ -67,5 +75,25 @@ public class SystemActions {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void logout(){
+        userPanel.dispose();
+    }
+//////////////////////////////////////////////////////////////////////////////////////////// TODO
+    public static void addNewAccount(){
+        System.out.println("dodano nowe konto");
+    }
+
+    public static void showAccounts(){
+        System.out.println("twoje konta");
+    }
+
+    public static void deleteAnAccount(){
+        System.out.println("skasowano");
+    }
+
+    public static void changePassword(){
+        System.out.println("Zmieniono");
     }
 }
