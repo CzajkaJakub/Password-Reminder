@@ -11,7 +11,6 @@ import java.awt.*;
 public class LoggingFrame extends JFrame implements LoginFrameElements {
 
     public LoggingFrame(){
-        setPanels();
         frameSettings();
     }
 
@@ -29,36 +28,14 @@ public class LoggingFrame extends JFrame implements LoginFrameElements {
         this.setVisible(true);
     }
 
-    private void setPanels(){
-        setNorthPanel();
-        setCenterPanel();
-        setSouthPanel();
-    }
-
-    private void setNorthPanel(){
-        northLogPane.add(new ImageLabel(passwordReminderImage));
-    }
-
-    private void setCenterPanel(){
-        centerLogPane.add(loginField);
-        centerLogPane.add(passwordField);
-    }
-
-    private void setSouthPanel(){
-        logInButton.addActionListener(e->tryToLogin());
-        southLogPane.add(logInButton);
-        registerButton.addActionListener(e->registerNewUser());
-        southLogPane.add(registerButton);
-    }
-
-    private void tryToLogin(){
-        String login = loginField.getText();
-        String password = passwordField.getText();
+    public static void tryToLogin(){
+        String login = loginTextField.getText();
+        String password = passwordTextField.getText();
         SystemActions.logInSystem(Cypher.encrypt(login, EncryptTypes.USER_LOGIN),
                 Cypher.encrypt(password, EncryptTypes.USER_PASSWORD));
     }
 
-    private void registerNewUser(){
+    public static void registerNewUser(){
         SystemActions.registerNewUser();
     }
 }
