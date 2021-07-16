@@ -36,6 +36,8 @@ public class LoggingFrame extends JFrame implements LoginFrameElements {
     }
 
     public static void registerNewUser(){
-        SystemActions.registerNewUser();
+        String login = loginTextField.getText();
+        String password = passwordTextField.getText();
+        SystemActions.registerNewUser(login, password);
     }
 }

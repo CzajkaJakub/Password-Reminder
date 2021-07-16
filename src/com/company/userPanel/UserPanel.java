@@ -25,16 +25,15 @@ public class UserPanel extends JFrame implements UserPanelElements {
 
     private void frameSettings(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setMinimumSize(new Dimension(1000, 800));
+        this.setMinimumSize(new Dimension(1050, 800));
         this.setLayout(new BorderLayout());
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setIconImage(programIcon.getImage());
         this.setTitle("User panel");
-        this.add(northUserPanel, BorderLayout.NORTH);
         this.add(southUserPanel, BorderLayout.SOUTH);
-        this.add(centerUserPanel, BorderLayout.CENTER);
-        this.add(westUserPanel, BorderLayout.WEST);
+        this.add(centerUserPanel);
+        this.setJMenuBar(userMenuBar);
         this.setVisible(true);
     }
 

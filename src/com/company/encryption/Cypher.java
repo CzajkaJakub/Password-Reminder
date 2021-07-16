@@ -37,7 +37,6 @@ public class Cypher {
     }
 
     private static String decryptData(String textToDecrypt, int key){
-        System.out.println(textToDecrypt);
         String[] encryptedValues = textToDecrypt.split("\\.");
         StringBuilder encryptedText = new StringBuilder();
         for (String x : encryptedValues) {

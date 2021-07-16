@@ -1,30 +1,8 @@
 package com.company.messages;
-
-import com.company.encryption.Cypher;
-import com.company.encryption.EncryptTypes;
-
 import javax.swing.*;
 
 
 public class Messages extends JOptionPane {
-    public static String registerInputLogin(){
-        String inputLogin = JOptionPane.showInputDialog(null,
-                "Type your login.",
-                "Register",
-                JOptionPane.QUESTION_MESSAGE);
-        return  Cypher.encrypt(inputLogin, EncryptTypes.USER_LOGIN);
-    }
-
-
-    public static String registerInputPassword(){
-        String inputPassword = JOptionPane.showInputDialog(null,
-                "Type your password.",
-                "Register",
-                JOptionPane.QUESTION_MESSAGE);
-        return  Cypher.encrypt(inputPassword, EncryptTypes.USER_PASSWORD);
-    }
-
-
     public static void wrongPassword(){
         JOptionPane.showMessageDialog(null,
                 "Typed password is wrong, please try again!",
@@ -60,6 +38,17 @@ public class Messages extends JOptionPane {
                 "Account was created!",
                 "Account information!",
                 JOptionPane.WARNING_MESSAGE);
+    }
+
+    public static int confirmationOfLogout(){
+        return JOptionPane.showOptionDialog(null,
+                "Do you really want to logout?",
+                "Logout Window",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.ERROR_MESSAGE,
+                null,
+                null,
+                0);
     }
 
 

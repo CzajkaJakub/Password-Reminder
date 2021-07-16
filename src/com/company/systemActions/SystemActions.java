@@ -1,6 +1,9 @@
 package com.company.systemActions;
 
 import com.company.Main;
+import com.company.encryption.Cypher;
+import com.company.encryption.EncryptTypes;
+import com.company.loginFrame.LoggingFrame;
 import com.company.userPanel.UserPanel;
 import com.company.messages.Messages;
 
@@ -28,14 +31,15 @@ public class SystemActions {
         }
     }
 
-    public static void registerNewUser(){
-        String login = Messages.registerInputLogin();
-        String password;
-        if(searchUserLogin(login)){
+    public static void registerNewUser(String login, String password){
+
+        String encryptedLogin = Cypher.encrypt(login, EncryptTypes.USER_LOGIN);
+        String encryptedPassword = Cypher.encrypt(password, EncryptTypes.USER_PASSWORD);
+
+        if(searchUserLogin(encryptedLogin)){
             Messages.userUnavailable();
         }else{
-            password = Messages.registerInputPassword();
-            createNewUser(login, password);
+            createNewUser(encryptedLogin, encryptedPassword);
             Messages.accountCreatedMessage();
         }
     }
@@ -78,22 +82,9 @@ public class SystemActions {
     }
 
     public static void logout(){
-        userPanel.dispose();
-    }
-//////////////////////////////////////////////////////////////////////////////////////////// TODO
-    public static void addNewAccount(){
-        System.out.println("dodano nowe konto");
-    }
-
-    public static void showAccounts(){
-        System.out.println("twoje konta");
-    }
-
-    public static void deleteAnAccount(){
-        System.out.println("skasowano");
-    }
-
-    public static void changePassword(){
-        System.out.println("Zmieniono");
+        if(Messages.confirmationOfLogout() == 0){
+            userPanel.dispose();
+            Main.loggingFrame = new LoggingFrame();
+        }
     }
 }

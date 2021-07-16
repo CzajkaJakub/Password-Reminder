@@ -31,5 +31,4 @@ public interface LoginFrameElements {
     NorthPanel northLogPane = new NorthPanel();
     CenterPanel centerLogPane = new CenterPanel();
     SouthPanel southLogPane = new SouthPanel();
-
 }
