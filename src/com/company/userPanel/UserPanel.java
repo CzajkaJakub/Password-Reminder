@@ -30,7 +30,7 @@ public class UserPanel extends JFrame implements UserPanelElements {
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setIconImage(programIcon.getImage());
-        this.setTitle("User panel");
+        this.setTitle("Password reminder - User panel: " + decryptedLogin);
         this.add(southUserPanel, BorderLayout.SOUTH);
         this.add(centerUserPanel);
         this.setJMenuBar(userMenuBar);

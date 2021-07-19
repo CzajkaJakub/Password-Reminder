@@ -19,7 +19,9 @@ public interface MenuPositions {
     JMenuItem changePasswordAccount = new JMenuItem("Change Password of your accounts");
     JMenuItem showAccount = new JMenuItem("Show all of your accounts");
 
-    JMenuItem changeColorSettings = new JMenuItem("Change color");
+    JMenuItem changeBackgroundColorSettings = new JMenuItem("Change background color");
+    JMenuItem changeTextColorSettings = new JMenuItem("Change text color");
+
 
     JMenuItem aboutInformation = new JMenuItem("About program");
 

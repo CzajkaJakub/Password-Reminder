@@ -1,5 +1,6 @@
 package com.company.loginFrame.LoginPasswordTextFields;
 
+import com.company.userPanel.MenuBar.MenuActions.ColorSystem.SystemColors;
 import com.company.loginFrame.LoginFrameElements;
 
 import javax.swing.*;
@@ -14,8 +15,8 @@ public class RegisterCheckBox extends JCheckBox implements LoginFrameElements {
         this.addActionListener(e->checkRegistration());
         this.setFont(new Font("MV Boli", Font.BOLD, 35));
         this.setPreferredSize(new Dimension(300, 100));
-        this.setForeground(Color.WHITE);
-        this.setBackground(Color.BLACK);
+        this.setBackground(SystemColors.backgroundColor);
+        this.setForeground(SystemColors.textColor);
         this.setIcon(registerNoIcon);
         this.setFocusable(false);
 

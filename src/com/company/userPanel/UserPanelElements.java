@@ -10,7 +10,6 @@ import javax.swing.*;
 public interface UserPanelElements {
     ImageIcon programIcon = new ImageIcon("src/images/programIcon.png");
 
-    ImageIcon passwordReminderImage = new ImageIcon("src/images/passwordReminder.png");
     ImageIcon logOutImage = new ImageIcon("src/images/logOut.png");
 
     StylizedJButton logOutButton = new StylizedJButton(logOutImage, 283, 77);

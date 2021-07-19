@@ -52,4 +52,17 @@ public class Messages extends JOptionPane {
     }
 
 
+    public static void colorChanger() {
+        JOptionPane.showMessageDialog(null,
+                "Color will be changed after application reset!",
+                "Color Changer!",
+                JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public static void aboutProgram(String message){
+        JOptionPane.showMessageDialog(null,
+                message,
+                "About program!",
+                JOptionPane.PLAIN_MESSAGE);
+    }
 }

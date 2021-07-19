@@ -1,6 +1,6 @@
 package com.company.userPanel.Panels;
 
-import com.company.ImageLabel;
+import com.company.userPanel.MenuBar.MenuActions.ColorSystem.SystemColors;
 import com.company.systemActions.SystemActions;
 import com.company.userPanel.UserPanelElements;
 
@@ -12,9 +12,8 @@ public class SouthUserPanel extends JPanel implements UserPanelElements {
         buttonListeners();
         this.setPreferredSize(new Dimension(1050, 120));
         this.setLayout(new FlowLayout());
-        this.add(new ImageLabel(passwordReminderImage));
         this.add(logOutButton);
-        this.setBackground(Color.BLACK);
+        this.setBackground(SystemColors.backgroundColor);
         this.setOpaque(true);
     }
 
