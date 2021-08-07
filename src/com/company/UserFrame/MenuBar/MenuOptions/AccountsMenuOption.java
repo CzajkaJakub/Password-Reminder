@@ -39,17 +39,12 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
 
     @Override
     public void addListeners() {
-
     }
 
     public void addListeners(UserData data) {
         addAccount.addActionListener(e->data.addAccount());
-
-        ////////////////// zayebiscie
-        System.out.println("dodano");
-        System.out.println(data.getDecryptedPassword());
-        System.out.println(data.getDecryptedLogin());
-        System.out.println(data.getUserPath());
-        System.out.println(data.getAmountOfAccounts());
+        deleteAccount.addActionListener(e->data.deleteAccount());
+        changePasswordAccount.addActionListener(e->data.changePasswordOfYourAccounts());
+        showAccount.addActionListener(e->data.showAllAccounts());
     }
 }

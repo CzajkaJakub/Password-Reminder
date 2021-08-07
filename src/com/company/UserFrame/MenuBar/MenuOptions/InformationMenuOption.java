@@ -13,7 +13,6 @@ public class InformationMenuOption extends JMenu implements BarElementsSettings{
     public InformationMenuOption() {
         barSettings();
         createBarElements();
-        addListeners();
     }
 
 

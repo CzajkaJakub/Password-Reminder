@@ -6,6 +6,7 @@ import com.company.systemActions.ColorSystem.SystemColors;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class UserMenuOption extends JMenu implements BarElementsSettings {
 
     private JMenuItem profileUser;
@@ -39,6 +40,12 @@ public class UserMenuOption extends JMenu implements BarElementsSettings {
 
     @Override
     public void addListeners() {
+    }
 
+    public void addListeners(UserData data) {
+        profileUser.addActionListener(e->data.showProfilePanel());
+        imageUser.addActionListener(e->data.changeProfileImage());
+        deleteUser.addActionListener(e->data.deleteUser());
+        changePasswordUser.addActionListener(e->data.changeProfilePassword());
     }
 }

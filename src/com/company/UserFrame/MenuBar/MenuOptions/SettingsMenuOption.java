@@ -1,8 +1,6 @@
 package com.company.UserFrame.MenuBar.MenuOptions;
 
 
-
-
 import com.company.systemActions.ColorSystem.SystemColors;
 
 import javax.swing.*;
@@ -22,7 +20,6 @@ public class SettingsMenuOption extends JMenu implements BarElementsSettings{
     public SettingsMenuOption() {
         createBarElements();
         barSettings();
-        addListeners();
     }
 
 

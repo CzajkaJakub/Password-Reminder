@@ -10,7 +10,7 @@ import java.io.*;
 public class Main {
 
     private static LoggingFrame loggingFrame;
-    private static UserFrame userFrame;
+    public static UserFrame userFrame;
 
     public static void main(String[] args){
         elementsSettings();
@@ -40,7 +40,5 @@ public class Main {
         loggingFrame.dispose();
     }
 
-    public static void destroyUserPanel() {
-        userFrame.dispose();
-    }
+    public static void destroyUserPanel() { userFrame.dispose(); }
 }
