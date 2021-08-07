@@ -1,46 +1,45 @@
 package com.company.systemActions;
 
 import com.company.Main;
-import com.company.encryption.Cypher;
-import com.company.encryption.EncryptTypes;
-import com.company.loginFrame.LoggingFrame;
-import com.company.userPanel.UserPanel;
-import com.company.messages.Messages;
+import com.company.UserFrame.UserData;
+import com.company.systemActions.encryption.Cypher;
+import com.company.systemActions.encryption.EncryptTypes;
+import com.company.systemActions.messages.SystemMessages;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SystemActions {
 
-    private static UserPanel userPanel;
 
     public static void logInSystem(String login, String password){
         if(searchUserLogin(login)){
             if(searchUserPassword(password, login)) {
-                Main.loggingFrame.dispose();
-                userPanel = new UserPanel(login, password);
+                Main.destroyLoggingPanel();
+                Main.createUserPanel(login, password);
             }else{
-                Messages.wrongPassword();
+                SystemMessages.wrongPassword();
             }
         }else{
-            Messages.wrongUser();
+            SystemMessages.wrongUser();
         }
     }
 
     public static void registerNewUser(String login, String password){
 
-        String encryptedLogin = Cypher.encrypt(login, EncryptTypes.USER_LOGIN);
-        String encryptedPassword = Cypher.encrypt(password, EncryptTypes.USER_PASSWORD);
+        String encryptedLogin = Cypher.encryptData(login, EncryptTypes.USER_LOGIN);
+        String encryptedPassword = Cypher.encryptData(password, EncryptTypes.USER_PASSWORD);
 
         if(searchUserLogin(encryptedLogin)){
-            Messages.userUnavailable();
+            SystemMessages.userUnavailable();
         }else{
             createNewUser(encryptedLogin, encryptedPassword);
-            Messages.accountCreatedMessage();
+            SystemMessages.accountCreatedMessage();
         }
     }
 
@@ -57,8 +56,8 @@ public class SystemActions {
     }
 
     private static void createNewUser(String login, String password){
-        String pth = "src/register/" + login + "/" + password;
-        File user = new File(pth);
+        String userPath = "src/register/" + login + "/" + password;
+        File user = new File(userPath);
         user.mkdirs();
         hideData(login, password);
     }
@@ -71,7 +70,6 @@ public class SystemActions {
         Path pathRegister = Paths.get(pthRegister);
         Path pathLogin = Paths.get(pthLogin);
         Path pathPassword = Paths.get(pthPassword);
-
         try {
             Files.setAttribute(pathRegister, "dos:hidden", Boolean.TRUE, LinkOption.NOFOLLOW_LINKS);
             Files.setAttribute(pathLogin, "dos:hidden", Boolean.TRUE, LinkOption.NOFOLLOW_LINKS);
@@ -81,10 +79,32 @@ public class SystemActions {
         }
     }
 
-    public static void logout(){
-        if(Messages.confirmationOfLogout() == 0){
-            userPanel.dispose();
-            Main.loggingFrame = new LoggingFrame();
+    public static void logout() {
+        if(SystemMessages.confirmationOfLogout() == 0){
+            Main.destroyUserPanel();
+            Main.createLoggingPanel();
         }
     }
+
+    public static void saveUser(UserData userData) {
+        try{
+            String dataPath = userData.getUserPath() + "/data.ser";
+            FileOutputStream data = new FileOutputStream(dataPath);
+            ObjectOutputStream saveData = new ObjectOutputStream(data);
+            saveData.writeObject(userData);
+            userData.getUserPath();
+            data.close();
+            saveData.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getDataOfLogin(){
+        String dataPattern = "E, dd MMM yyyy HH:mm:ss z";
+        SimpleDateFormat simpleDate = new SimpleDateFormat(dataPattern);
+        return simpleDate.format(new Date());
+    }
+
+
 }

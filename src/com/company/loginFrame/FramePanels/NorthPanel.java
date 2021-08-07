@@ -1,13 +1,15 @@
 package com.company.loginFrame.FramePanels;
 
-import com.company.ImageLabel;
-import com.company.userPanel.MenuBar.MenuActions.ColorSystem.SystemColors;
-import com.company.loginFrame.LoginFrameElements;
+import com.company.Components.ImageLabel;
+import com.company.systemActions.ColorSystem.SystemColors;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class NorthPanel extends JPanel implements LoginFrameElements {
+public class NorthPanel extends JPanel {
+
+    private static final ImageIcon passwordReminderImage = new ImageIcon("src/images/passwordReminder.png");
+
     public NorthPanel(){
         this.setPreferredSize(new Dimension(100, 250));
         this.add(new ImageLabel(passwordReminderImage));

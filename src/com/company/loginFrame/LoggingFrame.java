@@ -1,18 +1,32 @@
 package com.company.loginFrame;
 
-
+import com.company.loginFrame.FramePanels.CenterPanel;
+import com.company.loginFrame.FramePanels.NorthPanel;
+import com.company.loginFrame.FramePanels.SouthPanel;
+import com.company.loginFrame.LoginPasswordTextFields.LoggingPanel;
 import com.company.systemActions.SystemActions;
-import com.company.encryption.Cypher;
-import com.company.encryption.EncryptTypes;
-
+import com.company.systemActions.encryption.Cypher;
+import com.company.systemActions.encryption.EncryptTypes;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class LoggingFrame extends JFrame implements LoginFrameElements {
+public class LoggingFrame extends JFrame {
+
+    private NorthPanel northPanel;
+    private CenterPanel centerPanel;
+    private SouthPanel southPanel ;
+    private final ImageIcon imageIcon = new ImageIcon("src/images/programIcon.png");
 
     public LoggingFrame(){
+        createPanels();
         frameSettings();
+    }
+
+    private void createPanels() {
+        northPanel = new NorthPanel();
+        centerPanel = new CenterPanel();
+        southPanel = new SouthPanel();
     }
 
     private void frameSettings(){
@@ -21,24 +35,26 @@ public class LoggingFrame extends JFrame implements LoginFrameElements {
         this.setLayout(new BorderLayout());
         this.setResizable(true);
         this.setLocationRelativeTo(null);
-        this.setIconImage(programIcon.getImage());
+        this.setIconImage(imageIcon.getImage());
         this.setTitle("Password Reminder");
-        this.add(northLogPane, BorderLayout.NORTH);
-        this.add(centerLogPane, BorderLayout.CENTER);
-        this.add(southLogPane, BorderLayout.SOUTH);
+        this.add(northPanel, BorderLayout.NORTH);
+        this.add(centerPanel, BorderLayout.CENTER);
+        this.add(southPanel, BorderLayout.SOUTH);
         this.setVisible(true);
     }
 
     public static void tryToLogin(){
-        String login = loginTextField.getText();
-        String password = passwordTextField.getText();
-        SystemActions.logInSystem(Cypher.encrypt(login, EncryptTypes.USER_LOGIN),
-                Cypher.encrypt(password, EncryptTypes.USER_PASSWORD));
+        String login = LoggingPanel.loginTextField.getText();
+        String password = LoggingPanel.passwordTextField.getText();
+        String encryptedLogin = Cypher.encryptData(login, EncryptTypes.USER_LOGIN);
+        String encryptedPassword = Cypher.encryptData(password, EncryptTypes.USER_PASSWORD);
+        SystemActions.logInSystem(encryptedLogin, encryptedPassword);
     }
 
     public static void registerNewUser(){
-        String login = loginTextField.getText();
-        String password = passwordTextField.getText();
+        String login = LoggingPanel.loginTextField.getText();
+        String password = LoggingPanel.passwordTextField.getText();
         SystemActions.registerNewUser(login, password);
     }
+
 }

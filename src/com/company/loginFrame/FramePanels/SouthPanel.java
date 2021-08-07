@@ -1,15 +1,20 @@
 package com.company.loginFrame.FramePanels;
 
-import com.company.userPanel.MenuBar.MenuActions.ColorSystem.SystemColors;
-import com.company.loginFrame.LoggingFrame;
-import com.company.loginFrame.LoginFrameElements;
+import com.company.systemActions.ColorSystem.SystemColors;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class SouthPanel extends JPanel implements LoginFrameElements {
+import static com.company.loginFrame.LoggingFrame.registerNewUser;
+import static com.company.loginFrame.LoggingFrame.tryToLogin;
+
+public class SouthPanel extends JPanel implements SouthButtons {
+
     public SouthPanel(){
-        setButtonsActions();
+        panelSettings();
+    }
+
+    private void panelSettings() {
         this.setPreferredSize(new Dimension(100, 180));
         this.setBackground(SystemColors.backgroundColor);
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 60));
@@ -18,9 +23,11 @@ public class SouthPanel extends JPanel implements LoginFrameElements {
         this.add(registerButton);
     }
 
-    public void setButtonsActions(){
-        logInButton.addActionListener(e-> LoggingFrame.tryToLogin());
+
+    public static void setButtonsActions(){
+        logInButton.addActionListener(e-> tryToLogin());
         registerButton.setVisible(false);
-        registerButton.addActionListener(e->LoggingFrame.registerNewUser());
+        registerButton.addActionListener(e->registerNewUser());
     }
+
 }
