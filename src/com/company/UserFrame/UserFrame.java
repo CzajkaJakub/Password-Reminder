@@ -1,18 +1,14 @@
 package com.company.UserFrame;
 
+import com.company.UserFrame.MenuBar.BarFunctions;
 import com.company.UserFrame.MenuBar.MenuBar;
-import com.company.UserFrame.MenuBar.MenuOptions.AccountsMenuOption;
 import com.company.UserFrame.Panels.CenterPanel;
-import com.company.UserFrame.Panels.CenterPanels.*;
 import com.company.UserFrame.Panels.SouthUserPanel;
 import com.company.systemActions.SystemActions;
+import com.company.systemActions.messages.SystemMessages;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
@@ -22,14 +18,15 @@ public class UserFrame extends JFrame {
 
     private static final ImageIcon programIcon = new ImageIcon("src/images/programIcon.png");
 
-    private MenuBar userMenuBar;
+    private static MenuBar userMenuBar;
+    public static SouthUserPanel southUserPanel;
+    public static CenterPanel centerPanel;
     private UserData userData;
-    public SouthUserPanel southUserPanel;
-    public CenterPanel centerPanel;
 
 
     public UserFrame(String login, String password) {
         readUserData(login, password);
+        SystemMessages.welcomeMessage(userData.getDecryptedLogin());
         saveLoginHistory();
         createPanels();
         frameSettings();
@@ -41,6 +38,7 @@ public class UserFrame extends JFrame {
         userMenuBar = new MenuBar();
         southUserPanel = new SouthUserPanel();
         centerPanel = new CenterPanel();
+        BarFunctions.showProfilePanel(userData);
     }
 
     private void frameSettings(){

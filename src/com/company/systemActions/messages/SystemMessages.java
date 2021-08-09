@@ -50,4 +50,47 @@ public class SystemMessages extends JOptionPane {
                 null,
                 0);
     }
+
+    public static int confirmAccountAdded() {
+        return JOptionPane.showOptionDialog(null,
+                "Are you sure to add this account?",
+                "Account informer",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.ERROR_MESSAGE,
+                null,
+                null,
+                0);
+    }
+
+    public static void keyBusy() {
+        JOptionPane.showMessageDialog(null,
+                "This key is bused, try the other one",
+                "Account Informer!",
+                JOptionPane.WARNING_MESSAGE);
+    }
+
+    public static void accountAdded() {
+        JOptionPane.showMessageDialog(null,
+                "Account was successful added!",
+                "Account Informer!",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void aboutProgram(String message){
+        JOptionPane.showMessageDialog(null,
+                message,
+                "About program!",
+                JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public static int confirmShowData() {
+        return JOptionPane.showOptionDialog(null,
+                "Are you sure?",
+                "Account informer",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.ERROR_MESSAGE,
+                null,
+                null,
+                0);
+    }
 }

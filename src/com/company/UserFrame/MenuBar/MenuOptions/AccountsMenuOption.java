@@ -1,5 +1,6 @@
 package com.company.UserFrame.MenuBar.MenuOptions;
 
+import com.company.UserFrame.MenuBar.BarFunctions;
 import com.company.UserFrame.UserData;
 import com.company.systemActions.ColorSystem.SystemColors;
 
@@ -42,9 +43,9 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
     }
 
     public void addListeners(UserData data) {
-        addAccount.addActionListener(e->data.addAccount());
-        deleteAccount.addActionListener(e->data.deleteAccount());
-        changePasswordAccount.addActionListener(e->data.changePasswordOfYourAccounts());
-        showAccount.addActionListener(e->data.showAllAccounts());
+        addAccount.addActionListener(e-> BarFunctions.addAccount(data));
+        deleteAccount.addActionListener(e-> BarFunctions.deleteAccount(data));
+        changePasswordAccount.addActionListener(e-> BarFunctions.changePasswordOfYourAccounts(data));
+        showAccount.addActionListener(e-> BarFunctions.showAllAccounts(data));
     }
 }

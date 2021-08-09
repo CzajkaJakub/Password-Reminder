@@ -9,6 +9,7 @@ import com.company.systemActions.messages.SystemMessages;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import static com.company.Main.userFrame;
 
@@ -20,63 +21,61 @@ public class UserData implements Serializable {
     private String encryptedPassword;
     private String userPath;
     private int amountOfAccounts;
-    private HashMap<String, String> accounts;
-    private UserFrame frame;
+    private HashMap<String, LinkedList<String>> accounts;
+    private LinkedList<String> keys;
 
     public UserData(String login, String password, UserFrame frame) {
-        readData(login, password, frame);
-        SystemMessages.welcomeMessage(decryptedLogin);
+        readData(login, password);
     }
 
-    private void readData(String login, String password, UserFrame frame) {
-        this.frame = frame;
+    private void readData(String login, String password) {
         decryptedLogin = Cypher.decryptData(login, EncryptTypes.USER_LOGIN);
         decryptedPassword = Cypher.decryptData(password, EncryptTypes.USER_PASSWORD);
         encryptedLogin = login;
         encryptedPassword = password;
         userPath = "src/register/" + encryptedLogin + "/" + encryptedPassword;
         accounts = new HashMap<>();
+        keys = new LinkedList<>();
     }
 
-    public void addAccount(){
-        frame.centerPanel.switchPanels(new AddAccountPanel());
-    }
-
-    public void deleteAccount() {
-        frame.centerPanel.switchPanels(new DeleteAccountPanel());
-    }
-
-
-    public void changePasswordOfYourAccounts() {
-        frame.centerPanel.switchPanels(new ChangePasswordPanel());
-    }
-
-    public void showAllAccounts() {
-        frame.centerPanel.switchPanels(new ShowAllAccountsPanel());
-    }
-
-    public void showProfilePanel() {
-        frame.centerPanel.switchPanels(new CenterUserPanel());
-    }
-
-    public void changeProfileImage() {
-        System.out.println("zmieniam zdjecia");
-    }
-
-    public void deleteUser() {
-        System.out.println("kasuje konto");
-    }
-
-    public void changeProfilePassword() {
-        System.out.println("zmieniam haslo konta");
+    public String getEncryptedLogin(){
+        return encryptedLogin;
     }
 
     public String getDecryptedLogin(){
         return decryptedLogin;
     }
 
+    public String getDecryptedPassword(){ return decryptedPassword; }
+
+    public String getEncryptedPassword(){ return encryptedPassword; }
+
+    public int getAmountOfAccounts(){ return amountOfAccounts; }
+
+    public HashMap<String, LinkedList<String>> getAccounts(){ return accounts; }
+
+    public LinkedList<String> getKeys(){ return keys; };
+
     public String getUserPath() {
         return userPath;
     }
 
+    public void addDataToAccount(String serviceName, String login, String password){
+        LinkedList<String> dataOfServiceAccount = new LinkedList<>();
+        dataOfServiceAccount.add(login);
+        dataOfServiceAccount.add(password);
+        keys.add(serviceName);
+        accounts.put(serviceName, dataOfServiceAccount);
+        amountOfAccounts += 1;
+    }
+
+    public void deleteServiceAccount(String uniqueName){
+        amountOfAccounts -= 1;
+        keys.remove(uniqueName);
+        accounts.remove(uniqueName);
+    }
+
+    public void setNewPassword(String uniqueName, String newPassword) {
+        accounts.get(uniqueName).set(1, Cypher.encryptData(newPassword, EncryptTypes.USER_SERVICE_PASSWORD));
+    }
 }

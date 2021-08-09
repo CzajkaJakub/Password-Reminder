@@ -7,15 +7,16 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class CenterPanel extends JPanel {
+public class CenterPanel extends JPanel implements PanelsCreation {
     private static LoggingPanel loggingPanel;
 
     public CenterPanel(){
-        createPanels();
-        frameSettings();
+        createElements();
+        panelSettings();
     }
 
-    private void frameSettings() {
+    @Override
+    public void panelSettings() {
         this.setPreferredSize(new Dimension(100, 250));
         this.add(loggingPanel);
         this.setBackground(SystemColors.backgroundColor);
@@ -23,7 +24,8 @@ public class CenterPanel extends JPanel {
         this.setOpaque(true);
     }
 
-    private void createPanels() {
+    @Override
+    public void createElements() {
         loggingPanel = new LoggingPanel();
     }
 }

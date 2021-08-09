@@ -4,28 +4,23 @@ package com.company.UserFrame.Panels;
 
 
 import com.company.UserFrame.Panels.CenterPanels.*;
+import com.company.systemActions.ColorSystem.SystemColors;
 
 import javax.swing.*;
 import java.awt.*;
 
+import static com.company.Main.userFrame;
+
 public class CenterPanel extends JLayeredPane {
 
-    private CenterUserPanel centerUserPanel;
-
     public CenterPanel(){
-        createElements();
         panelSettings();
     }
 
-    private void createElements() {
-        centerUserPanel = new CenterUserPanel();
-    }
-
     private void panelSettings() {
-        this.setLayout(new CardLayout(0,0));
+        this.setBackground(SystemColors.backgroundColor);
+        this.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 50));
         this.setOpaque(true);
-        this.setVisible(true);
-        this.add(centerUserPanel);
     }
 
     public void switchPanels(JPanel a){
@@ -34,6 +29,4 @@ public class CenterPanel extends JLayeredPane {
         this.repaint();
         this.revalidate();
     }
-
-
 }

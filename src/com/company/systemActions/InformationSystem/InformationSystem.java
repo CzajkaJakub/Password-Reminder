@@ -1,6 +1,8 @@
 package com.company.systemActions.InformationSystem;
 
 
+import com.company.systemActions.messages.SystemMessages;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,7 +14,7 @@ public class InformationSystem {
     public static void readInformation(){
         try {
             String text = Files.readString(Paths.get(informationFilePath));
-            AboutSystemMessage.aboutProgram(text);
+            SystemMessages.aboutProgram(text);
         } catch (IOException ignored) {}
     }
 }

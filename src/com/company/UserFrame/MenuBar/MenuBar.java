@@ -17,7 +17,6 @@ public class MenuBar extends JMenuBar implements BarSettings {
         barSettings();
     }
 
-
     @Override
     public void barSettings() {
         this.setBackground(SystemColors.backgroundColor);
