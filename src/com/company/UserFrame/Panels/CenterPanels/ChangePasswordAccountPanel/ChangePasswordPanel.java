@@ -1,21 +1,41 @@
 package com.company.UserFrame.Panels.CenterPanels.ChangePasswordAccountPanel;
 
-import com.company.UserFrame.Panels.CenterPanels.AbstractPanel;
+import com.company.UserFrame.Panels.CenterPanels.SliderAccounts.SliderTemplatePanel;
 import com.company.UserFrame.Panels.CenterPanels.ChangePasswordAccountPanel.Components.ChangePasswordButton;
-import com.company.UserFrame.Panels.CenterPanels.deleteAccountPanel.Components.DeleteAccountButton;
-import com.company.UserFrame.UserData;
+import com.company.UserFrame.UserDataSystem.UserData;
+import com.company.UserFrame.UserFrame.UserFrame;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class ChangePasswordPanel extends AbstractPanel {
+public class ChangePasswordPanel extends SliderTemplatePanel {
 
-    ChangePasswordButton changePasswordButton;
+    private ChangePasswordButton changePasswordButton;
+
+    String changePasswordButtonName = "Change Password";
 
     public ChangePasswordPanel(UserData data) {
         super(data);
-        changePasswordButton = new ChangePasswordButton("Change Password");
-        this.add(changePasswordButton);
-        changePasswordButton.addActionListener(e-> super.changePasswordService());
+        createPanel();
+        addListeners(data);
     }
+
+    private void createPanel() {
+        changePasswordButton = new ChangePasswordButton(changePasswordButtonName);
+        this.add(changePasswordButton);
+    }
+
+
+    private void addListeners(UserData userData) {
+        changePasswordButton.addActionListener(e-> changePasswordService(userData));
+    }
+
+    public void changePasswordService(UserData userData){
+        if(super.getCurrentSliderPosition() != -1){
+            String newPassword = JOptionPane.showInputDialog(null, "input your new password");
+            userData.setNewPassword(super.getCurrentEncryptedServiceName(), newPassword);
+            UserFrame.centerPanel.switchPanels(new ChangePasswordPanel(userData));
+        }
+    }
+
 }
+

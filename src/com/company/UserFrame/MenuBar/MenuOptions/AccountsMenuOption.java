@@ -1,8 +1,8 @@
 package com.company.UserFrame.MenuBar.MenuOptions;
 
 import com.company.UserFrame.MenuBar.BarFunctions;
-import com.company.UserFrame.UserData;
-import com.company.systemActions.ColorSystem.SystemColors;
+import com.company.UserFrame.UserDataSystem.UserData;
+import com.company.ColorSystem.SystemColors;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,23 +14,23 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
     private JMenuItem changePasswordAccount;
     private JMenuItem showAccount;
 
+
     public AccountsMenuOption() {
         createBarElements();
         barSettings();
     }
 
-    @Override
+
     public void createBarElements() {
-        addAccount = new JMenuItem("Add Account");
-        deleteAccount = new JMenuItem("Delete Account");
-        changePasswordAccount = new JMenuItem("Change Password of your accounts");
-        showAccount = new JMenuItem("Show all of your accounts");
+        addAccount = new JMenuItem(addAccountOption);
+        deleteAccount = new JMenuItem(deleteAccountOption);
+        changePasswordAccount = new JMenuItem(changePassword);
+        showAccount = new JMenuItem(showAllAccounts);
     }
 
-    @Override
     public void barSettings() {
-        this.setText("Accounts");
-        this.setFont(new Font("MV Boli", Font.BOLD, 25));
+        this.setText(firstBarElement);
+        this.setFont(new Font(fontType, fontStyle, fontSize));
         this.setForeground(SystemColors.textColor);
         this.add(addAccount);
         this.add(deleteAccount);
@@ -38,9 +38,6 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
         this.add(showAccount);
     }
 
-    @Override
-    public void addListeners() {
-    }
 
     public void addListeners(UserData data) {
         addAccount.addActionListener(e-> BarFunctions.addAccount(data));

@@ -1,14 +1,20 @@
 package com.company.UserFrame.MenuBar;
 
-import com.company.UserFrame.Panels.CenterPanels.*;
+
 import com.company.UserFrame.Panels.CenterPanels.ChangePasswordAccountPanel.ChangePasswordPanel;
-import com.company.UserFrame.Panels.CenterPanels.PanelComponents.AddAccountPanel.AddAccountPanel;
+import com.company.UserFrame.Panels.CenterPanels.AddAccountPanel.AddAccountPanel;
 import com.company.UserFrame.Panels.CenterPanels.ShowAllAccountsPanel.ShowAllAccountsPanel;
-import com.company.UserFrame.Panels.CenterPanels.deleteAccountPanel.DeleteAccountPanel;
-import com.company.UserFrame.UserData;
-import com.company.UserFrame.UserFrame;
+import com.company.UserFrame.Panels.CenterPanels.DeleteAccountPanel.DeleteAccountPanel;
+import com.company.UserFrame.Panels.CenterPanels.ProfilePanel.CenterUserPanel;
+import com.company.UserFrame.UserDataSystem.UserData;
+import com.company.UserFrame.UserFrame.UserFrame;
+
+import javax.swing.*;
+import java.io.File;
+
 
 public class BarFunctions {
+
     public static void addAccount(UserData data){
         UserFrame.centerPanel.switchPanels(new AddAccountPanel(data));
     }
@@ -29,18 +35,14 @@ public class BarFunctions {
         UserFrame.centerPanel.switchPanels(new CenterUserPanel(data));
     }
 
-    public static void changeProfileImage() {
-        System.out.println("zmieniam zdjecia");
+    public static void changeProfileImage(UserData data) {
+        JFileChooser imageChooser = new JFileChooser();
+        imageChooser.setCurrentDirectory(new File("C://"));
+        int response = imageChooser.showOpenDialog(null);
+        if(response == JFileChooser.APPROVE_OPTION){
+            String imagePath = String.valueOf(imageChooser.getSelectedFile().getAbsoluteFile());
+            data.setImageIconPath(imagePath);
+            UserFrame.centerPanel.switchPanels(new CenterUserPanel(data));
+        }
     }
-
-    public static void deleteUser() {
-        System.out.println("kasuje konto");
-    }
-
-    public static void changeProfilePassword() {
-        System.out.println("zmieniam haslo konta");
-    }
-
-
-
 }

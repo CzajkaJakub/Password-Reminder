@@ -1,8 +1,8 @@
 package com.company.UserFrame.MenuBar.MenuOptions;
 
 import com.company.UserFrame.MenuBar.BarFunctions;
-import com.company.UserFrame.UserData;
-import com.company.systemActions.ColorSystem.SystemColors;
+import com.company.UserFrame.UserDataSystem.UserData;
+import com.company.ColorSystem.SystemColors;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,41 +12,29 @@ public class UserMenuOption extends JMenu implements BarElementsSettings {
 
     private JMenuItem profileUser;
     private JMenuItem imageUser;
-    private JMenuItem deleteUser;
-    private JMenuItem changePasswordUser;
 
     public UserMenuOption(){
         createBarElements();
         barSettings();
     }
 
-    @Override
+
     public void createBarElements() {
-        profileUser = new JMenuItem("Profile");
-        imageUser = new JMenuItem("Set your profile image");
-        deleteUser = new JMenuItem("Delete Account");
-        changePasswordUser = new JMenuItem("Change Password");
+        profileUser = new JMenuItem(showProfile);
+        imageUser = new JMenuItem(setProfileImage);
     }
 
-    @Override
     public void barSettings() {
-        this.setText("User");
-        this.setFont(new Font("MV Boli", Font.BOLD, 25));
+        this.setText(secondBarElement);
+        this.setFont(new Font(fontType, fontStyle, fontSize));
         this.setForeground(SystemColors.textColor);
         this.add(profileUser);
         this.add(imageUser);
-        this.add(deleteUser);
-        this.add(changePasswordUser);
     }
 
-    @Override
-    public void addListeners() {
-    }
 
     public void addListeners(UserData data) {
         profileUser.addActionListener(e-> BarFunctions.showProfilePanel(data));
-        imageUser.addActionListener(e-> BarFunctions.changeProfileImage());
-        deleteUser.addActionListener(e-> BarFunctions.deleteUser());
-        changePasswordUser.addActionListener(e-> BarFunctions.changeProfilePassword());
+        imageUser.addActionListener(e-> BarFunctions.changeProfileImage(data));
     }
 }

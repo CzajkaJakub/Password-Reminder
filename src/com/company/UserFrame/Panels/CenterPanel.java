@@ -1,15 +1,9 @@
 package com.company.UserFrame.Panels;
 
-
-
-
-import com.company.UserFrame.Panels.CenterPanels.*;
-import com.company.systemActions.ColorSystem.SystemColors;
+import com.company.ColorSystem.SystemColors;
 
 import javax.swing.*;
 import java.awt.*;
-
-import static com.company.Main.userFrame;
 
 public class CenterPanel extends JLayeredPane {
 
@@ -19,13 +13,13 @@ public class CenterPanel extends JLayeredPane {
 
     private void panelSettings() {
         this.setBackground(SystemColors.backgroundColor);
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 50));
+        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50));
         this.setOpaque(true);
     }
 
-    public void switchPanels(JPanel a){
+    public void switchPanels(JPanel currentPanel){
         this.removeAll();
-        this.add(a);
+        this.add(currentPanel);
         this.repaint();
         this.revalidate();
     }

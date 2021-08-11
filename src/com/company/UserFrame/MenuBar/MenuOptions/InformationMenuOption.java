@@ -1,7 +1,7 @@
 package com.company.UserFrame.MenuBar.MenuOptions;
 
-import com.company.systemActions.ColorSystem.SystemColors;
-import com.company.systemActions.InformationSystem.InformationSystem;
+import com.company.ColorSystem.SystemColors;
+import com.company.InformationSystem.InformationSystem;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,20 +16,17 @@ public class InformationMenuOption extends JMenu implements BarElementsSettings{
     }
 
 
-    @Override
     public void createBarElements() {
-        this.setText("Information");
-        this.setFont(new Font("MV Boli", Font.BOLD, 25));
+        this.setText(fourthBarElement);
+        this.setFont(new Font(fontType, fontStyle, fontSize));
         this.setForeground(SystemColors.textColor);
         this.add(aboutInformation);
     }
 
-    @Override
     public void barSettings() {
-        aboutInformation = new JMenuItem("About program");
+        aboutInformation = new JMenuItem(information);
     }
 
-    @Override
     public void addListeners() {
         aboutInformation.addActionListener(e-> InformationSystem.readInformation());
     }

@@ -1,24 +1,26 @@
 package com.company;
 
-import com.company.UserFrame.UserFrame;
-import com.company.loginFrame.FramePanels.SouthPanel;
-import com.company.loginFrame.LoggingFrame;
-import com.company.systemActions.ColorSystem.SystemColors;
-import com.company.systemActions.messages.SystemMessages;
+import com.company.UserFrame.UserFrame.UserFrame;
+import com.company.LoggingFrame.LogginFramePanels.SouthPanel;
+import com.company.LoggingFrame.LoggingFrame;
+import com.company.ColorSystem.SystemColors;
 
 import java.io.*;
 
 public class Main {
 
-    private static LoggingFrame loggingFrame;
+
+    public static LoggingFrame loggingFrame;
     public static UserFrame userFrame;
 
+
     public static void main(String[] args){
-        elementsSettings();
+        readSettings();
         loggingFrame = new LoggingFrame();
     }
 
-    private static void elementsSettings() {
+
+    private static void readSettings() {
         try {
             SystemColors.readColors();
             SouthPanel.setButtonsActions();
@@ -27,19 +29,23 @@ public class Main {
         }
     }
 
+
     public static void createLoggingPanel() {
         destroyUserPanel();
         loggingFrame = new LoggingFrame();
     }
+
 
     public static void createUserPanel(String login, String password){
         destroyLoggingPanel();
         userFrame = new UserFrame(login, password);
     }
 
+
     public static void destroyLoggingPanel(){
         loggingFrame.dispose();
     }
+
 
     public static void destroyUserPanel() { userFrame.dispose(); }
 }

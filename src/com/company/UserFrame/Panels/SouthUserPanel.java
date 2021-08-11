@@ -1,35 +1,37 @@
 package com.company.UserFrame.Panels;
 
-import com.company.Components.StylizedJButton;
-import com.company.systemActions.ColorSystem.SystemColors;
-import com.company.systemActions.SystemActions;
+import com.company.Elements.SubmitButtonIcon;
+import com.company.ColorSystem.SystemColors;
+import com.company.UserFrame.UserDataSystem.LogoutSystem;
 
 import javax.swing.*;
 import java.awt.*;
 
 
-public class SouthUserPanel extends JPanel{
+public class SouthUserPanel extends JPanel implements PanelsSettings{
 
     ImageIcon logOutImage;
-    StylizedJButton logOutButton;
+    SubmitButtonIcon logOutButton;
 
     public SouthUserPanel(){
         createElements();
         buttonListeners();
-        this.setPreferredSize(new Dimension(1050, 120));
+        this.setPreferredSize(new Dimension(southPanelWidth, southPanelHeight));
         this.setLayout(new FlowLayout());
         this.add(logOutButton);
         this.setBackground(SystemColors.backgroundColor);
         this.setOpaque(true);
     }
 
+
     private void createElements() {
-        logOutImage = new ImageIcon("src/images/logOut.png");
-        logOutButton = new StylizedJButton(logOutImage, 283, 77);
+        logOutImage = new ImageIcon(logoutIconPath);
+        logOutButton = new SubmitButtonIcon(logOutImage, 283, 77);
     }
 
+
     private void buttonListeners(){
-        logOutButton.addActionListener(e -> SystemActions.logout());
+        logOutButton.addActionListener(e -> LogoutSystem.logout());
     }
 
 }
