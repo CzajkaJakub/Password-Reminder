@@ -42,7 +42,7 @@ public class UserData implements Serializable {
 
     public HashMap<String, LinkedList<String>> getAccounts(){ return accounts; }
 
-    public LinkedList<String> getKeys(){ return keys; };
+    public LinkedList<String> getKeys(){ return keys; }
 
     public String getUserPath() {
         return userPath;

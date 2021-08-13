@@ -5,7 +5,7 @@ import java.awt.*;
 public interface BarSettings {
 
     int displayBarType = FlowLayout.CENTER;
-    int horizontalBarGap = 100;
+    int horizontalBarGap = 70;
 
     int topBorder = 0;
     int bottomBorder = 1;

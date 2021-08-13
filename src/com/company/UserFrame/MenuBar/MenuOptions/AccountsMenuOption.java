@@ -30,6 +30,7 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
 
     public void barSettings() {
         this.setText(firstBarElement);
+        this.setIcon(accountsIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
         this.setForeground(SystemColors.textColor);
         this.add(addAccount);

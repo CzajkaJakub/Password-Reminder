@@ -26,6 +26,7 @@ public class UserMenuOption extends JMenu implements BarElementsSettings {
 
     public void barSettings() {
         this.setText(secondBarElement);
+        this.setIcon(userIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
         this.setForeground(SystemColors.textColor);
         this.add(profileUser);

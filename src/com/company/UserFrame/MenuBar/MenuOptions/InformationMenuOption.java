@@ -18,6 +18,7 @@ public class InformationMenuOption extends JMenu implements BarElementsSettings{
 
     public void createBarElements() {
         this.setText(fourthBarElement);
+        this.setIcon(informationIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
         this.setForeground(SystemColors.textColor);
         this.add(aboutInformation);

@@ -1,5 +1,6 @@
 package com.company.UserFrame.Panels.CenterPanels.ProfilePanel;
 
+
 import com.company.ColorSystem.SystemColors;
 import com.company.Elements.ImageLabel;
 import com.company.UserFrame.DatePanel.DatePanel;
@@ -8,6 +9,7 @@ import com.company.UserFrame.UserDataSystem.UserData;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,6 +27,9 @@ public class CenterUserPanel extends JPanel implements ProfilePanelSettings {
 
     private void createElements(UserData userData) {
         String imageIconPath = userData.getImageIconPath();
+        if(!new File(imageIconPath).exists()){
+            imageIconPath = "src/Images/BarIcons/profileImage.png";
+        }
         String amountOfAccountsLabelText = "Accounts in system : " + userData.getAmountOfAccounts();
         profileImage = new ImageIcon(imageIconPath);
         amountOfAccountsLabel = new ProfileLabel(amountOfAccountsLabelText);
@@ -36,8 +41,8 @@ public class CenterUserPanel extends JPanel implements ProfilePanelSettings {
         this.setLayout(new FlowLayout(elementsPosition, horizontalGap, verticalGap));
         this.setBackground(SystemColors.backgroundColor);
         this.setOpaque(true);
-        this.add(new ImageLabel(profileImage));
         this.setVisible(true);
+        this.add(new ImageLabel(profileImage));
         this.add(amountOfAccountsLabel);
         this.add(clock);
     }

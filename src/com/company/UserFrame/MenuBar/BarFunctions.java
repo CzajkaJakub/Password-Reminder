@@ -1,6 +1,6 @@
 package com.company.UserFrame.MenuBar;
 
-
+import ImageResize.ImageResize;
 import com.company.UserFrame.Panels.CenterPanels.ChangePasswordAccountPanel.ChangePasswordPanel;
 import com.company.UserFrame.Panels.CenterPanels.AddAccountPanel.AddAccountPanel;
 import com.company.UserFrame.Panels.CenterPanels.ShowAllAccountsPanel.ShowAllAccountsPanel;
@@ -10,7 +10,9 @@ import com.company.UserFrame.UserDataSystem.UserData;
 import com.company.UserFrame.UserFrame.UserFrame;
 
 import javax.swing.*;
-import java.io.File;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 public class BarFunctions {
@@ -41,8 +43,17 @@ public class BarFunctions {
         int response = imageChooser.showOpenDialog(null);
         if(response == JFileChooser.APPROVE_OPTION){
             String imagePath = String.valueOf(imageChooser.getSelectedFile().getAbsoluteFile());
-            data.setImageIconPath(imagePath);
-            UserFrame.centerPanel.switchPanels(new CenterUserPanel(data));
+            Path source = Paths.get(imagePath);
+            String fileName = source.getFileName().toString();
+            String fileNameWithoutExtension = fileName.substring(0, fileName.lastIndexOf("."));
+            Path target = Paths.get("src/Images/ResizedImages/" + fileNameWithoutExtension + ".png");
+            data.setImageIconPath(target.toString());
+            try (InputStream is = new FileInputStream(source.toFile())) {
+                ImageResize.resize(is, target, 200, 200);
+                UserFrame.centerPanel.switchPanels(new CenterUserPanel(data));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

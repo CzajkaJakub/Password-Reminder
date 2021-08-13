@@ -20,7 +20,7 @@ public class InformationSystem {
     private static void aboutProgram(String message){
         JOptionPane.showMessageDialog(null,
                 message,
-                "About program!",
+                "Program Information!",
                 JOptionPane.PLAIN_MESSAGE);
     }
 }
