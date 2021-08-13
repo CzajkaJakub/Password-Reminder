@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class ChangePasswordButton extends SubmitButton {
 
-    String iconPath = "src/Images/BarIcons/changePassword.png";
+    String iconPath = "resources/Images/BarIcons/changePassword.png";
 
     public ChangePasswordButton(String text) {
         super(text);

@@ -28,7 +28,7 @@ public class RegisterSystem {
     }
 
     private static void createNewUser(String login, String password){
-        String userPath = "src/register/" + login + "/" + password;
+        String userPath = "resources/register/" + login + "/" + password;
         File user = new File(userPath);
         user.mkdirs();
         hideData(login, password);
@@ -36,9 +36,9 @@ public class RegisterSystem {
 
     private static void hideData(String login, String password){
 
-        String pthRegister = "src/register";
-        String pthLogin = "src/register/" + login;
-        String pthPassword = "src/register/" + login + "/" + password;
+        String pthRegister = "resources/register";
+        String pthLogin = "resources/register/" + login;
+        String pthPassword = "resources/register/" + login + "/" + password;
         Path pathRegister = Paths.get(pthRegister);
         Path pathLogin = Paths.get(pthLogin);
         Path pathPassword = Paths.get(pthPassword);

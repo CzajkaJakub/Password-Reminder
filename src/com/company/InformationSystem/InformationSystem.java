@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class InformationSystem {
 
-    private static final String informationFilePath = "src/com/company/InformationSystem/Information.txt";
+    private static final String informationFilePath = "resources/InformationSystem/Information.txt";
 
     public static void readInformation(){
         try {

@@ -5,7 +5,7 @@ import java.io.*;
 public class ReadUser {
 
     public static UserData readUserData(String login, String password) {
-        File userDataPath = new File("src/register/" + login + "/" + password + "/data.ser");
+        File userDataPath = new File("resources/register/" + login + "/" + password + "/data.ser");
         if (!userDataPath.exists()) {
             return new UserData(login, password);
         } else {

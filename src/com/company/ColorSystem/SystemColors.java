@@ -20,7 +20,7 @@ public class SystemColors {
     static String foregroundChangerMessage = "Pick a color of text";
 
 
-    private static final File colorFile = new File("src/com/company/ColorSystem/colors.txt");
+    private static final File colorFile = new File("resources/ColorSystem/colors.txt");
 
 
     public static void readColors() throws FileNotFoundException {

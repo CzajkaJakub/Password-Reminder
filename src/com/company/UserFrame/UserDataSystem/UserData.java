@@ -17,7 +17,7 @@ public class UserData implements Serializable {
     private int amountOfAccounts;
     private HashMap<String, LinkedList<String>> accounts;
     private LinkedList<String> keys;
-    private String imageIconPath = "src/Images/BarIcons/profileImage.png";
+    private String imageIconPath = "resources/Images/BarIcons/profileImage.png";
 
     public UserData(String login, String password) {
         readData(login, password);
@@ -28,7 +28,7 @@ public class UserData implements Serializable {
         decryptedPassword = Cypher.decryptData(password, EncryptTypes.USER_PASSWORD);
         encryptedLogin = login;
         encryptedPassword = password;
-        userPath = "src/register/" + encryptedLogin + "/" + encryptedPassword;
+        userPath = "resources/register/" + encryptedLogin + "/" + encryptedPassword;
         accounts = new HashMap<>();
         keys = new LinkedList<>();
     }

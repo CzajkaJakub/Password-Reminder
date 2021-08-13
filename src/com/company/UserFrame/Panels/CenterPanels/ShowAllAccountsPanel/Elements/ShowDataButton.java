@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class ShowDataButton extends SubmitButton {
 
-    String iconPath = "src/Images/BarIcons/showAccount.png";
+    String iconPath = "resources/Images/BarIcons/showAccount.png";
 
     public ShowDataButton(String text) {
         super(text);

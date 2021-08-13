@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class SaveAccountButton extends SubmitButton {
 
-    static final String buttonIconPath = "src/Images/BarIcons/saveAccount.png";
+    static final String buttonIconPath = "resources/Images/BarIcons/saveAccount.png";
 
     public SaveAccountButton(String text) {
         super(text);

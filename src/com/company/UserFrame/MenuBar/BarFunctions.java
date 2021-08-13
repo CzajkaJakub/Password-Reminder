@@ -46,7 +46,7 @@ public class BarFunctions {
             Path source = Paths.get(imagePath);
             String fileName = source.getFileName().toString();
             String fileNameWithoutExtension = fileName.substring(0, fileName.lastIndexOf("."));
-            Path target = Paths.get("src/Images/ResizedImages/" + fileNameWithoutExtension + ".png");
+            Path target = Paths.get("resources/Images/ResizedImages/" + fileNameWithoutExtension + ".png");
             data.setImageIconPath(target.toString());
             try (InputStream is = new FileInputStream(source.toFile())) {
                 ImageResize.resize(is, target, 200, 200);

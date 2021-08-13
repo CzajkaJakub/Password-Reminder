@@ -28,7 +28,7 @@ public class CenterUserPanel extends JPanel implements ProfilePanelSettings {
     private void createElements(UserData userData) {
         String imageIconPath = userData.getImageIconPath();
         if(!new File(imageIconPath).exists()){
-            imageIconPath = "src/Images/BarIcons/profileImage.png";
+            imageIconPath = "resources/Images/BarIcons/profileImage.png";
         }
         String amountOfAccountsLabelText = "Accounts in system : " + userData.getAmountOfAccounts();
         profileImage = new ImageIcon(imageIconPath);
