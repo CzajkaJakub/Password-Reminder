@@ -5,6 +5,7 @@ import com.company.ColorSystem.SystemColors;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class CenterPanel extends JLayeredPane {
 
     public CenterPanel(){
@@ -16,6 +17,7 @@ public class CenterPanel extends JLayeredPane {
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50));
         this.setOpaque(true);
     }
+
 
     public void switchPanels(JPanel currentPanel){
         this.removeAll();

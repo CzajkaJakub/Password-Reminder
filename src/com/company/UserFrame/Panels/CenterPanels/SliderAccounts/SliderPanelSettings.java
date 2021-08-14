@@ -5,7 +5,7 @@ import java.awt.*;
 public interface SliderPanelSettings {
 
     int panelWidth = 750;
-    int panelHeight = 700;
+    int panelHeight = 550;
     int elementsPosition = FlowLayout.CENTER;
     int horizontalGap = 0;
     int verticalGap = 40;

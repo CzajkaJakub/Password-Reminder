@@ -5,9 +5,9 @@ import java.awt.*;
 public interface ProfilePanelSettings {
 
     int panelWidth = 650;
-    int panelHeight = 600;
+    int panelHeight = 550;
     int elementsPosition = FlowLayout.CENTER;
     int horizontalGap = panelWidth;
-    int verticalGap = 50;
+    int verticalGap = 40;
 
 }
