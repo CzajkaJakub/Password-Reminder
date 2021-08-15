@@ -6,8 +6,12 @@ import com.company.ColorSystem.SystemColors;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class PasswordField extends JPasswordField implements FontSettings, TextFieldSettings {
+public class PasswordField extends JPasswordField implements FontSettings, TextFieldSettings, MouseListener {
+
+    private int cleared = 0;
 
     public PasswordField(String text){
         this.setFont(new Font(fontType, fontStyle, fontSize));
@@ -18,6 +22,36 @@ public class PasswordField extends JPasswordField implements FontSettings, TextF
         this.setBackground(SystemColors.backgroundColor);
         this.setForeground(SystemColors.textColor);
         this.setCaretColor(SystemColors.textColor);
+        this.addMouseListener(this);
         this.setEchoChar('*');
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if(cleared == 0){
+            cleared = 1;
+            this.setText("");
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        this.setForeground(Color.green);
+        this.setCaretColor(Color.green);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        this.setForeground(SystemColors.textColor);
+        this.setCaretColor(SystemColors.textColor);
     }
 }

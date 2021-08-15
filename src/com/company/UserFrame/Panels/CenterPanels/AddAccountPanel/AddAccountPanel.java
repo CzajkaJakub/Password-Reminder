@@ -64,18 +64,27 @@ public class AddAccountPanel extends JPanel implements AddAccountSettings {
 
     private void checkFreeKey() {
         String serviceAccountName = serviceName.getText();
-        String encryptedServiceAccountName = Cypher.encryptData(serviceAccountName, EncryptTypes.USER_SERVICE_NAME);
-        LinkedList<String> uniqueNames = userData.getKeys();
-        if(uniqueNames.contains(encryptedServiceAccountName)){
-            AddAccountMessage.keyBusy();
+        String serviceLoginName = loginService.getText();
+        String servicePasswordName = passwordService.getText();
+
+        if(!checkEmptyFields(serviceAccountName, serviceLoginName, servicePasswordName)){
+            String encryptedServiceAccountName = Cypher.encryptData(serviceAccountName, EncryptTypes.USER_SERVICE_NAME);
+            LinkedList<String> uniqueNames = userData.getKeys();
+            if(uniqueNames.contains(encryptedServiceAccountName)){
+                AddAccountMessage.keyBusy();
+            }else{
+                String encryptedServiceLogin = Cypher.encryptData(serviceLoginName, EncryptTypes.USER_SERVICE_LOGIN);
+                String encryptedServicePassword = Cypher.encryptData(servicePasswordName, EncryptTypes.USER_SERVICE_PASSWORD);
+                userData.addDataToAccount(encryptedServiceAccountName, encryptedServiceLogin, encryptedServicePassword);
+                AddAccountMessage.accountAdded();
+                UserFrame.centerPanel.switchPanels(new AddAccountPanel(userData));
+            }
         }else{
-            String serviceLoginName = loginService.getText();
-            String servicePasswordName = passwordService.getText();
-            String encryptedServiceLogin = Cypher.encryptData(serviceLoginName, EncryptTypes.USER_SERVICE_LOGIN);
-            String encryptedServicePassword = Cypher.encryptData(servicePasswordName, EncryptTypes.USER_SERVICE_PASSWORD);
-            userData.addDataToAccount(encryptedServiceAccountName, encryptedServiceLogin, encryptedServicePassword);
-            AddAccountMessage.accountAdded();
-            UserFrame.centerPanel.switchPanels(new AddAccountPanel(userData));
+            AddAccountMessage.fieldEmpty();
         }
+    }
+
+    private boolean checkEmptyFields(String serviceAccountName, String serviceLoginName, String servicePasswordName) {
+        return (serviceAccountName.isBlank() || serviceLoginName.isBlank() || servicePasswordName.isBlank());
     }
 }

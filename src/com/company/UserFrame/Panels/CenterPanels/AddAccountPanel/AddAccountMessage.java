@@ -14,6 +14,14 @@ public class AddAccountMessage {
                 0);
     }
 
+    public static void fieldEmpty() {
+        JOptionPane.showMessageDialog(null,
+                "Empty Field",
+                "Account Informer!",
+                JOptionPane.WARNING_MESSAGE);
+    }
+
+
     public static void keyBusy() {
         JOptionPane.showMessageDialog(null,
                 "This key is bused, try the other one",
