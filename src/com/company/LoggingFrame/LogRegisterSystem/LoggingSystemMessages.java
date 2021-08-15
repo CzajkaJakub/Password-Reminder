@@ -10,6 +10,13 @@ public class LoggingSystemMessages {
                 JOptionPane.WARNING_MESSAGE);
     }
 
+    public static void emptyField(){
+        JOptionPane.showMessageDialog(null,
+                "Empty Field!",
+                "Wrong data!",
+                JOptionPane.WARNING_MESSAGE);
+    }
+
     public static void wrongUser(){
         JOptionPane.showMessageDialog(null,
                 "Typed user doesn't exist!",
