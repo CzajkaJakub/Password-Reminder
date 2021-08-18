@@ -3,6 +3,9 @@ package com.company.UserFrame.Panels.CenterPanels.AddAccountPanel;
 import javax.swing.*;
 
 public class AddAccountMessage {
+
+    private final static ImageIcon accountAddedIcon = new ImageIcon("resources/Images/RegisterCheckBoxIcons/registerYes.png");
+
     public static int confirmAccountAdded() {
         return JOptionPane.showOptionDialog(null,
                 "Are you sure to add this account?",
@@ -33,7 +36,8 @@ public class AddAccountMessage {
         JOptionPane.showMessageDialog(null,
                 "Account was successful added!",
                 "Account Informer!",
-                JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.INFORMATION_MESSAGE,
+                accountAddedIcon);
     }
 
 }

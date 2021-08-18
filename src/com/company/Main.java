@@ -1,14 +1,12 @@
 package com.company;
 
 import com.company.UserFrame.UserFrame.UserFrame;
-import com.company.LoggingFrame.LogginFramePanels.SouthPanel;
 import com.company.LoggingFrame.LoggingFrame;
 import com.company.ColorSystem.SystemColors;
 
 import java.io.*;
 
 public class Main {
-
 
     public static LoggingFrame loggingFrame;
     public static UserFrame userFrame;
@@ -23,7 +21,6 @@ public class Main {
     private static void readSettings() {
         try {
             SystemColors.readColors();
-            SouthPanel.setButtonsActions();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

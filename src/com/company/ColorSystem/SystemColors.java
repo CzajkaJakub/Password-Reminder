@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 public class SystemColors {
 
-    public static Color backgroundColor;
-    public static Color textColor;
+    private static Color backgroundColor;
+    private static Color textColor;
     private static int rgbBackgroundColor;
     private static int rgbTextColor;
 
@@ -26,8 +26,8 @@ public class SystemColors {
     public static void readColors() throws FileNotFoundException {
         Scanner colorsReader = new Scanner(colorFile);
         rgbBackgroundColor = colorsReader.nextInt();
-        backgroundColor = new Color(rgbBackgroundColor);
         rgbTextColor = colorsReader.nextInt();
+        backgroundColor = new Color(rgbBackgroundColor);
         textColor = new Color(rgbTextColor);
         colorsReader.close();
     }
@@ -35,32 +35,48 @@ public class SystemColors {
 
     public static void changeBackgroundColor(){
         try {
-            backgroundColor = JColorChooser.showDialog(null, backgroundChangerMessage, Color.black);
-            rgbBackgroundColor = backgroundColor.getRGB();
-            saveColors();
+            Color colorChoice = JColorChooser.showDialog(null, backgroundChangerMessage, Color.black);
+            if(checkCancelButton(colorChoice)){
+                backgroundColor = colorChoice;
+                rgbBackgroundColor = backgroundColor.getRGB();
+                SystemColorsMessages.colorChanger();
+            }
         }catch (Exception ignored){}
     }
 
 
     public static void changeTextColor(){
         try {
-            textColor = JColorChooser.showDialog(null, foregroundChangerMessage, Color.WHITE);
-            rgbTextColor = textColor.getRGB();
-            saveColors();
+            Color colorChoice = JColorChooser.showDialog(null, foregroundChangerMessage, Color.WHITE);
+            if(checkCancelButton(colorChoice)) {
+                textColor = colorChoice;
+                rgbTextColor = textColor.getRGB();
+                SystemColorsMessages.colorChanger();
+            }
         }catch (Exception ignored){}
     }
 
+    private static boolean checkCancelButton(Color colorOption) {
+        return colorOption != null;
+    }
 
-    public static void saveColors(){
+
+    public static void saveColorsToFile(){
         try {
             FileWriter colorSaver = new FileWriter(colorFile);
-            String colorsText = rgbBackgroundColor + "\n" + rgbTextColor;
-            colorSaver.write(colorsText);
+            String dataColors = rgbBackgroundColor + "\n" + rgbTextColor;
+            colorSaver.write(dataColors);
             colorSaver.close();
-            SystemColorsMessages.colorChanger();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public static Color getBackgroundColor(){
+        return backgroundColor;
+    }
+
+    public static Color getTextColor(){
+        return textColor;
+    }
 }

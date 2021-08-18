@@ -17,6 +17,7 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
 
     public AccountsMenuOption() {
         createBarElements();
+        createItemsIcons();
         barSettings();
     }
 
@@ -28,11 +29,18 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
         showAccount = new JMenuItem(showAllAccounts);
     }
 
+    private void createItemsIcons() {
+        addAccount.setIcon(addAccountIcon);
+        deleteAccount.setIcon(deleteAccountIcon);
+        changePasswordAccount.setIcon(changePasswordIcon);
+        showAccount.setIcon(showAllAccountsIcon);
+    }
+
     public void barSettings() {
         this.setText(firstBarElement);
         this.setIcon(accountsIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
-        this.setForeground(SystemColors.textColor);
+        this.setForeground(SystemColors.getTextColor());
         this.add(addAccount);
         this.add(deleteAccount);
         this.add(changePasswordAccount);

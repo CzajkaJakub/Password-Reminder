@@ -10,9 +10,13 @@ import java.util.LinkedList;
 public class UserData implements Serializable {
 
     private String decryptedLogin;
+
+    //future useful methods will be added
     private String decryptedPassword;
     private String encryptedLogin;
     private String encryptedPassword;
+    //
+
     private String userPath;
     private int amountOfAccounts;
     private HashMap<String, LinkedList<String>> accounts;

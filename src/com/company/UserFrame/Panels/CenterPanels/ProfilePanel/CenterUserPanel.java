@@ -2,7 +2,7 @@ package com.company.UserFrame.Panels.CenterPanels.ProfilePanel;
 
 
 import com.company.ColorSystem.SystemColors;
-import com.company.Elements.ImageLabel;
+import com.company.CommonElements.ImageLabel;
 import com.company.UserFrame.DatePanel.DatePanel;
 import com.company.UserFrame.Panels.CenterPanels.ProfilePanel.Elements.ProfileLabel;
 import com.company.UserFrame.UserDataSystem.UserData;
@@ -39,7 +39,7 @@ public class CenterUserPanel extends JPanel implements ProfilePanelSettings {
     public void panelSettings(){
         this.setPreferredSize(new Dimension(panelWidth, panelHeight));
         this.setLayout(new FlowLayout(elementsPosition, horizontalGap, verticalGap));
-        this.setBackground(SystemColors.backgroundColor);
+        this.setBackground(SystemColors.getBackgroundColor());
         this.setOpaque(true);
         this.setVisible(true);
         this.add(new ImageLabel(profileImage));
@@ -59,9 +59,7 @@ public class CenterUserPanel extends JPanel implements ProfilePanelSettings {
     }
 
     private void createClockLabel() {
-        this.remove(clock);
-        clock = new ProfileLabel(DatePanel.getData());
-        this.add(clock);
+        clock.setLabelText(DatePanel.getData());
         repaint();
         revalidate();
     }

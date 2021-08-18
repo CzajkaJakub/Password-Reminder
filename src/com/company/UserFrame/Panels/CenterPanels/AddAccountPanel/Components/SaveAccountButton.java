@@ -1,6 +1,6 @@
 package com.company.UserFrame.Panels.CenterPanels.AddAccountPanel.Components;
 
-import com.company.Elements.SubmitButton;
+import com.company.CommonElements.SubmitButton;
 
 import javax.swing.*;
 

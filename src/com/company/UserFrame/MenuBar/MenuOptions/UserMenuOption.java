@@ -15,6 +15,7 @@ public class UserMenuOption extends JMenu implements BarElementsSettings {
 
     public UserMenuOption(){
         createBarElements();
+        createItemsIcons();
         barSettings();
     }
 
@@ -24,11 +25,16 @@ public class UserMenuOption extends JMenu implements BarElementsSettings {
         imageUser = new JMenuItem(setProfileImage);
     }
 
+    private void createItemsIcons() {
+        profileUser.setIcon(showProfileIcon);
+        imageUser.setIcon(setYourProfilePhoto);
+    }
+
     public void barSettings() {
         this.setText(secondBarElement);
         this.setIcon(userIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
-        this.setForeground(SystemColors.textColor);
+        this.setForeground(SystemColors.getTextColor());
         this.add(profileUser);
         this.add(imageUser);
     }

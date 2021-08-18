@@ -1,6 +1,6 @@
-package com.company.Elements;
+package com.company.CommonElements;
 
-import com.company.StaticSettings.FontSettings;
+import com.company.GlobalSettings.FontSettings;
 import com.company.ColorSystem.SystemColors;
 
 import javax.swing.*;
@@ -17,8 +17,8 @@ public class SubmitButton extends JButton implements FontSettings {
     private void buttonSettings(String text) {
         this.setText(text);
         this.setFont(new Font(fontType, fontStyle, fontSize));
-        this.setBackground(SystemColors.backgroundColor);
-        this.setForeground(SystemColors.textColor);
+        this.setBackground(SystemColors.getBackgroundColor());
+        this.setForeground(SystemColors.getTextColor());
         this.setOpaque(true);
         this.setBorder(null);
         this.setFocusable(false);

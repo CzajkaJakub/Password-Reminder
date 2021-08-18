@@ -1,9 +1,12 @@
 package com.company.UserFrame.Panels;
 
 import com.company.ColorSystem.SystemColors;
+import com.company.CommonElements.ImageLabel;
 
 import javax.swing.*;
 import java.awt.*;
+
+import static com.company.GlobalSettings.GlobalImages.*;
 
 
 public class CenterPanel extends JLayeredPane {
@@ -13,10 +16,13 @@ public class CenterPanel extends JLayeredPane {
     }
 
     private void panelSettings() {
-        this.setBackground(SystemColors.backgroundColor);
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50));
+        this.setBackground(SystemColors.getBackgroundColor());
+        this.setLayout(new FlowLayout(FlowLayout.CENTER, 2000, 30));
         this.setOpaque(true);
+        this.add(new ImageLabel(passwordReminderWelcomePanel));
+        this.add(new ImageLabel(lockIcon));
     }
+
 
 
     public void switchPanels(JPanel currentPanel){

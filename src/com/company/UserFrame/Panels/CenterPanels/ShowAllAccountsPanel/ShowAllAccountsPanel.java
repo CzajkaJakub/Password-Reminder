@@ -3,7 +3,6 @@ package com.company.UserFrame.Panels.CenterPanels.ShowAllAccountsPanel;
 import com.company.UserFrame.Panels.CenterPanels.SliderAccounts.SliderTemplatePanel;
 import com.company.UserFrame.Panels.CenterPanels.ShowAllAccountsPanel.Elements.ShowDataButton;
 import com.company.UserFrame.UserDataSystem.UserData;
-import javax.swing.*;
 
 
 public class ShowAllAccountsPanel extends SliderTemplatePanel {
@@ -29,21 +28,10 @@ public class ShowAllAccountsPanel extends SliderTemplatePanel {
 
     public void showServiceData() {
         if(super.getCurrentSliderPosition() != -1){
-            if(confirmShowData() == 0){
+            if(ConfirmShowDataMessage.confirmShowData() == 0){
                 super.loginField.setText(super.getCurrentDecryptedLogin());
                 super.passwordField.setText(super.getCurrentDecryptedPassword());
             }
         }
-    }
-
-    public static int confirmShowData() {
-        return JOptionPane.showOptionDialog(null,
-                "Are you sure?",
-                "Account informer",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.ERROR_MESSAGE,
-                null,
-                null,
-                0);
     }
 }

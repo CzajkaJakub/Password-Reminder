@@ -3,9 +3,10 @@ package com.company.UserFrame.Panels.CenterPanels.ChangePasswordAccountPanel;
 import com.company.UserFrame.Panels.CenterPanels.SliderAccounts.SliderTemplatePanel;
 import com.company.UserFrame.Panels.CenterPanels.ChangePasswordAccountPanel.Components.ChangePasswordButton;
 import com.company.UserFrame.UserDataSystem.UserData;
-import com.company.UserFrame.UserFrame.UserFrame;
 
 import javax.swing.*;
+
+import static com.company.Main.userFrame;
 
 public class ChangePasswordPanel extends SliderTemplatePanel {
 
@@ -33,7 +34,7 @@ public class ChangePasswordPanel extends SliderTemplatePanel {
         if(super.getCurrentSliderPosition() != -1){
             String newPassword = JOptionPane.showInputDialog(null, "input your new password");
             userData.setNewPassword(super.getCurrentEncryptedServiceName(), newPassword);
-            UserFrame.centerPanel.switchPanels(new ChangePasswordPanel(userData));
+            userFrame.centerPanel.switchPanels(new ChangePasswordPanel(userData));
         }
     }
 

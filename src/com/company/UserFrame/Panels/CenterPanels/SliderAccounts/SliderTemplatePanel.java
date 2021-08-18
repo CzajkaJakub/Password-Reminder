@@ -61,7 +61,7 @@ public abstract class SliderTemplatePanel extends JPanel implements ChangeListen
         this.setVisible(true);
         this.setPreferredSize(new Dimension(panelWidth, panelHeight));
         this.setLayout(new FlowLayout(elementsPosition, horizontalGap, verticalGap));
-        this.setBackground(SystemColors.backgroundColor);
+        this.setBackground(SystemColors.getBackgroundColor());
         this.add(accountsLabel);
         this.add(accountsSlider);
         this.add(loginField);

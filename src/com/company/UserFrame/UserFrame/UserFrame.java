@@ -1,7 +1,7 @@
 package com.company.UserFrame.UserFrame;
 
-import com.company.StaticSettings.FrameSettings;
-import com.company.UserFrame.MenuBar.BarFunctions;
+import com.company.ColorSystem.SystemColors;
+import com.company.GlobalSettings.FrameSettings;
 import com.company.UserFrame.MenuBar.MenuBar;
 import com.company.UserFrame.Panels.CenterPanel;
 import com.company.UserFrame.Panels.SouthUserPanel;
@@ -18,9 +18,9 @@ import java.awt.event.WindowEvent;
 
 public class UserFrame extends JFrame implements FrameSettings {
 
-    public static MenuBar userMenuBar;
-    public static SouthUserPanel southUserPanel;
-    public static CenterPanel centerPanel;
+    public MenuBar userMenuBar;
+    public SouthUserPanel southUserPanel;
+    public CenterPanel centerPanel;
 
     UserData userData;
 
@@ -35,7 +35,6 @@ public class UserFrame extends JFrame implements FrameSettings {
         UserFrameWelcomeMessage.welcomeMessage(userData.getDecryptedLogin());
         SaveLoginData.saveLoginHistory(userData.getUserPath());
         createPanels();
-        BarFunctions.showProfilePanel(userData);
         frameSettings();
         addBarListeners();
     }
@@ -66,12 +65,14 @@ public class UserFrame extends JFrame implements FrameSettings {
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
                 SaveDataUser.saveUser(userData);
+                SystemColors.saveColorsToFile();
             }
 
             @Override
             public void windowClosed(WindowEvent e) {
                 super.windowClosed(e);
                 SaveDataUser.saveUser(userData);
+                SystemColors.saveColorsToFile();
             }
         });
     }

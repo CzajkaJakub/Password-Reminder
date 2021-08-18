@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class CenterPanel extends JPanel {
 
-    private static LoggingPanel loggingPanel;
+    public static LoggingPanel loggingPanel;
 
     int layoutElementsPosition = FlowLayout.CENTER;
     int loggingPanelWidth = 100;
@@ -23,7 +23,7 @@ public class CenterPanel extends JPanel {
 
     public void panelSettings() {
         this.setPreferredSize(new Dimension(loggingPanelWidth, loggingPanelHeight));
-        this.setBackground(SystemColors.backgroundColor);
+        this.setBackground(SystemColors.getBackgroundColor());
         this.setLayout(new FlowLayout(layoutElementsPosition, layoutHorizontalGap, layoutVerticalGap));
         this.add(loggingPanel);
         this.setOpaque(true);

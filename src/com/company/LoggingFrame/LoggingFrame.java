@@ -3,17 +3,17 @@ package com.company.LoggingFrame;
 import com.company.LoggingFrame.LogginFramePanels.CenterPanel;
 import com.company.LoggingFrame.LogginFramePanels.NorthPanel;
 import com.company.LoggingFrame.LogginFramePanels.SouthPanel;
-import com.company.StaticSettings.FrameSettings;
-import com.company.StaticSettings.StaticImages;
+import com.company.GlobalSettings.FrameSettings;
+import com.company.GlobalSettings.GlobalImages;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class LoggingFrame extends JFrame implements StaticImages, FrameSettings, LoggingFrameSettings {
+public class LoggingFrame extends JFrame implements GlobalImages, FrameSettings, LoggingFrameSettings {
 
-    private NorthPanel northPanel;
-    private CenterPanel centerPanel;
-    private SouthPanel southPanel ;
+    public NorthPanel northPanel;
+    public CenterPanel centerPanel;
+    public SouthPanel southPanel ;
 
 
     public LoggingFrame(){

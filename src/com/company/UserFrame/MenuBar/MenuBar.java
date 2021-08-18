@@ -20,10 +20,11 @@ public class MenuBar extends JMenuBar implements BarSettings {
 
     @Override
     public void barSettings() {
-        this.setBackground(SystemColors.backgroundColor);
+        this.setBackground(SystemColors.getBackgroundColor());
         this.setLayout(new FlowLayout(displayBarType, horizontalBarGap, displayBarType));
         this.setBorder(BorderFactory.createMatteBorder(topBorder, leftBorder, bottomBorder, rightBorder, borderColor));
         this.setPreferredSize(new Dimension(barWidth, barHeight));
+        this.setBackground(Color.black);
         this.add(user);
         this.add(accounts);
         this.add(settings);

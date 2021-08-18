@@ -6,4 +6,8 @@ public class ProfileLabel extends SliderLabel {
     public ProfileLabel(String text) {
         super(text);
     }
+
+    public void setLabelText(String text){
+        super.setText(text);
+    }
 }

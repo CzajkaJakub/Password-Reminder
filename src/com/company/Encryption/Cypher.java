@@ -18,12 +18,14 @@ public class Cypher {
     public static String encryptData(String textToEncrypt, EncryptTypes type){
         int key = keys.get(type);
         StringBuilder encryptedText = new StringBuilder();
+
         for(int i=0; i<textToEncrypt.length(); i++){
             char characterToEncrypt = textToEncrypt.charAt(i);
             int valOfCharacterAfterEncryption = (int)characterToEncrypt + key;
             encryptedText.append(valOfCharacterAfterEncryption);
             encryptedText.append(".");
         }
+
         return encryptedText.toString();
     }
 
@@ -31,11 +33,13 @@ public class Cypher {
         int key = keys.get(type);
         String[] encryptedValues = textToDecrypt.split("\\.");
         StringBuilder encryptedText = new StringBuilder();
+
         for (String x : encryptedValues) {
             int valueOfChar = Integer.parseInt(x) - key;
             char decryptedChar = (char) valueOfChar;
             encryptedText.append(decryptedChar);
         }
+
         return encryptedText.toString();
     }
 

@@ -21,8 +21,8 @@ public class AccountsSlider extends JSlider implements SliderLabelSettings {
         this.setValue(0);
         this.setMajorTickSpacing(1);
         this.setPaintTrack(true);
-        this.setBackground(SystemColors.backgroundColor);
-        this.setForeground(SystemColors.textColor);
+        this.setBackground(SystemColors.getBackgroundColor());
+        this.setForeground(SystemColors.getTextColor());
 
     }
 }

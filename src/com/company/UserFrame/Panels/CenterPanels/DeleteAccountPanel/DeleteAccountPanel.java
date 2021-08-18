@@ -3,11 +3,13 @@ package com.company.UserFrame.Panels.CenterPanels.DeleteAccountPanel;
 import com.company.UserFrame.Panels.CenterPanels.SliderAccounts.SliderTemplatePanel;
 import com.company.UserFrame.Panels.CenterPanels.DeleteAccountPanel.Components.DeleteAccountButton;
 import com.company.UserFrame.UserDataSystem.UserData;
-import com.company.UserFrame.UserFrame.UserFrame;
+
 
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
+
+import static com.company.Main.userFrame;
 
 public class DeleteAccountPanel extends SliderTemplatePanel implements ChangeListener {
 
@@ -35,7 +37,7 @@ public class DeleteAccountPanel extends SliderTemplatePanel implements ChangeLis
         if (super.getCurrentSliderPosition() != -1) {
             if (confirmDeleteAccount() == 0) {
                 userData.deleteServiceAccount(super.getCurrentEncryptedServiceName());
-                UserFrame.centerPanel.switchPanels(new DeleteAccountPanel(userData));
+                userFrame.centerPanel.switchPanels(new DeleteAccountPanel(userData));
             }
         }
     }

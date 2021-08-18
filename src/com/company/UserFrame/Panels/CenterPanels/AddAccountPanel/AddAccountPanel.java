@@ -1,16 +1,17 @@
 package com.company.UserFrame.Panels.CenterPanels.AddAccountPanel;
 
 import com.company.UserFrame.Panels.CenterPanels.AddAccountPanel.Components.SaveAccountButton;
-import com.company.Elements.TextField;
+import com.company.CommonElements.TextField;
 import com.company.UserFrame.UserDataSystem.UserData;
 import com.company.ColorSystem.SystemColors;
 import com.company.Encryption.Cypher;
 import com.company.Encryption.EncryptTypes;
-import com.company.UserFrame.UserFrame.UserFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
+
+import static com.company.Main.userFrame;
 
 public class AddAccountPanel extends JPanel implements AddAccountSettings {
 
@@ -34,7 +35,7 @@ public class AddAccountPanel extends JPanel implements AddAccountSettings {
         this.setVisible(true);
         this.setPreferredSize(new Dimension(panelWidth, panelHeight));
         this.setLayout(new FlowLayout(elementsPosition, horizontalGap, verticalGap));
-        this.setBackground(SystemColors.backgroundColor);
+        this.setBackground(SystemColors.getBackgroundColor());
         this.add(serviceName);
         this.add(loginService);
         this.add(passwordService);
@@ -68,16 +69,21 @@ public class AddAccountPanel extends JPanel implements AddAccountSettings {
         String servicePasswordName = passwordService.getText();
 
         if(!checkEmptyFields(serviceAccountName, serviceLoginName, servicePasswordName)){
+
             String encryptedServiceAccountName = Cypher.encryptData(serviceAccountName, EncryptTypes.USER_SERVICE_NAME);
             LinkedList<String> uniqueNames = userData.getKeys();
+
             if(uniqueNames.contains(encryptedServiceAccountName)){
                 AddAccountMessage.keyBusy();
             }else{
+
                 String encryptedServiceLogin = Cypher.encryptData(serviceLoginName, EncryptTypes.USER_SERVICE_LOGIN);
                 String encryptedServicePassword = Cypher.encryptData(servicePasswordName, EncryptTypes.USER_SERVICE_PASSWORD);
+
                 userData.addDataToAccount(encryptedServiceAccountName, encryptedServiceLogin, encryptedServicePassword);
                 AddAccountMessage.accountAdded();
-                UserFrame.centerPanel.switchPanels(new AddAccountPanel(userData));
+
+                userFrame.centerPanel.switchPanels(new AddAccountPanel(userData));
             }
         }else{
             AddAccountMessage.fieldEmpty();

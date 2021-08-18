@@ -16,14 +16,26 @@ public class RegisterSystem {
     public static void registerNewUser(){
         String login = LoggingPanel.loginTextField.getText();
         String password = LoggingPanel.passwordTextField.getText();
-        String encryptedLogin = Cypher.encryptData(login, EncryptTypes.USER_LOGIN);
-        String encryptedPassword = Cypher.encryptData(password, EncryptTypes.USER_PASSWORD);
 
+        if(!checkEmptyFields(login, password)){
+            String encryptedLogin = Cypher.encryptData(login, EncryptTypes.USER_LOGIN);
+            String encryptedPassword = Cypher.encryptData(password, EncryptTypes.USER_PASSWORD);
+            searchAvailabilityUsers(encryptedLogin, encryptedPassword);
+        }else{
+            RegisterSystemMessages.emptyField();
+        }
+    }
+
+    private static boolean checkEmptyFields(String login, String password) {
+        return login.isBlank() || password.isBlank();
+    }
+
+    private static void searchAvailabilityUsers(String encryptedLogin, String encryptedPassword){
         if(SearchUserSystem.searchUserLogin(encryptedLogin)){
-            LoggingSystemMessages.userUnavailable();
+            RegisterSystemMessages.userUnavailable();
         }else{
             createNewUser(encryptedLogin, encryptedPassword);
-            LoggingSystemMessages.accountCreatedMessage();
+            RegisterSystemMessages.accountCreatedMessage();
         }
     }
 
@@ -39,9 +51,11 @@ public class RegisterSystem {
         String pthRegister = "resources/register";
         String pthLogin = "resources/register/" + login;
         String pthPassword = "resources/register/" + login + "/" + password;
+
         Path pathRegister = Paths.get(pthRegister);
         Path pathLogin = Paths.get(pthLogin);
         Path pathPassword = Paths.get(pthPassword);
+
         try {
             Files.setAttribute(pathRegister, "dos:hidden", Boolean.TRUE, LinkOption.NOFOLLOW_LINKS);
             Files.setAttribute(pathLogin, "dos:hidden", Boolean.TRUE, LinkOption.NOFOLLOW_LINKS);

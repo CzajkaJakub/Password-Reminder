@@ -1,4 +1,4 @@
-package com.company.StaticSettings;
+package com.company.GlobalSettings;
 
 import java.awt.*;
 

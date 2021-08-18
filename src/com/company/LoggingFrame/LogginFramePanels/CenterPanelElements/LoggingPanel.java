@@ -24,7 +24,7 @@ public class LoggingPanel extends JPanel implements LoggingPanelSettings {
     private void frameSettings() {
         this.setPreferredSize(new Dimension(loggingPanelWidth, loggingPanelHeight));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(SystemColors.backgroundColor);
+        this.setBackground(SystemColors.getBackgroundColor());
         this.add(loginTextField);
         this.add(passwordTextField);
         this.add(registerCheckBox);

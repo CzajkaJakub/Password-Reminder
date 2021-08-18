@@ -7,9 +7,12 @@ import com.company.Encryption.EncryptTypes;
 
 
 public class LoggingSystem {
+
     public static void tryToLogin(){
+
         String login = LoggingPanel.loginTextField.getText();
         String password = LoggingPanel.passwordTextField.getText();
+
         if(!checkEmptyFields(login, password)){
             String encryptedLogin = Cypher.encryptData(login, EncryptTypes.USER_LOGIN);
             String encryptedPassword = Cypher.encryptData(password, EncryptTypes.USER_PASSWORD);

@@ -1,4 +1,4 @@
-package com.company.Elements;
+package com.company.CommonElements;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,7 @@
 package com.company.LoggingFrame.LogginFramePanels.CenterPanelElements.PanelElements;
 
-import com.company.StaticSettings.FontSettings;
-import com.company.StaticSettings.TextFieldSettings;
+import com.company.GlobalSettings.FontSettings;
+import com.company.GlobalSettings.TextFieldSettings;
 import com.company.ColorSystem.SystemColors;
 
 import javax.swing.*;
@@ -19,9 +19,9 @@ public class PasswordField extends JPasswordField implements FontSettings, TextF
         this.setHorizontalAlignment(textPosition);
         this.setBorder(BorderFactory.createMatteBorder(topBorder, leftBorder, bottomBorder, rightBorder, borderColor));
         this.setText(text);
-        this.setBackground(SystemColors.backgroundColor);
-        this.setForeground(SystemColors.textColor);
-        this.setCaretColor(SystemColors.textColor);
+        this.setBackground(SystemColors.getBackgroundColor());
+        this.setForeground(SystemColors.getTextColor());
+        this.setCaretColor(SystemColors.getTextColor());
         this.addMouseListener(this);
         this.setEchoChar('*');
     }
@@ -51,7 +51,7 @@ public class PasswordField extends JPasswordField implements FontSettings, TextF
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.setForeground(SystemColors.textColor);
-        this.setCaretColor(SystemColors.textColor);
+        this.setForeground(SystemColors.getTextColor());
+        this.setCaretColor(SystemColors.getTextColor());
     }
 }
