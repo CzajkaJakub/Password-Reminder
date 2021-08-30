@@ -24,7 +24,7 @@ public class MenuBar extends JMenuBar implements BarSettings {
         this.setLayout(new FlowLayout(displayBarType, horizontalBarGap, displayBarType));
         this.setBorder(BorderFactory.createMatteBorder(topBorder, leftBorder, bottomBorder, rightBorder, borderColor));
         this.setPreferredSize(new Dimension(barWidth, barHeight));
-        this.setBackground(Color.black);
+        this.setBackground(SystemColors.getBackgroundColor());
         this.add(user);
         this.add(accounts);
         this.add(settings);

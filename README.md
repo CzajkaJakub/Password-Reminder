@@ -1,5 +1,6 @@
 # Password-Reminder
-Password reminder is a program which store your accounts in your local host, so connection with network is
+
+Password reminder is a program full made by java and swing library which store your accounts in your local host, so connection with network is
 not required. Data is stored in files .ser. Account's files are packed in hidden folders in your computer's storage, so
 noone can see it in local explorer. In addition, all your accounts are encrypted by Caesar Cipher with 5 different keys
 intended to cypher various information like service name, login name etc.
