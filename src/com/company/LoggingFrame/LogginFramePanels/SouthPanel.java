@@ -38,8 +38,8 @@ public class SouthPanel extends JPanel implements LoggingFrameSettings {
     }
 
     private void createElements() {
-        logInButton = new SubmitButtonIcon(logInImage, 140, 64);
-        registerButton = new SubmitButtonIcon(registerImage, 199, 67);
+        logInButton = new SubmitButtonIcon(logInImage, 151, 66);
+        registerButton = new SubmitButtonIcon(registerImage, 203, 65);
     }
 
 
@@ -48,5 +48,4 @@ public class SouthPanel extends JPanel implements LoggingFrameSettings {
         registerButton.addActionListener(e-> RegisterSystem.registerNewUser());
         registerButton.setVisible(false);
     }
-
 }

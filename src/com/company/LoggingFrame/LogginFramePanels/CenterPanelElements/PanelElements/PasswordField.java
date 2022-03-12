@@ -24,6 +24,7 @@ public class PasswordField extends JPasswordField implements FontSettings, TextF
         this.setCaretColor(SystemColors.getTextColor());
         this.addMouseListener(this);
         this.setEchoChar('*');
+        this.setFocusable(false);
     }
 
     @Override
@@ -35,6 +36,8 @@ public class PasswordField extends JPasswordField implements FontSettings, TextF
         if(cleared == 0){
             cleared = 1;
             this.setText("");
+            this.setFocusable(true);
+            this.grabFocus();
         }
     }
 

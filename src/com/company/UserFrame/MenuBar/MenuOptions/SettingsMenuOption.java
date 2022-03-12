@@ -34,7 +34,7 @@ public class SettingsMenuOption extends JMenu implements BarElementsSettings{
     }
 
     public void barSettings() {
-        this.setText(thirdBarElement);
+        this.setPreferredSize(new Dimension(200, 50));        this.setText(thirdBarElement);
         this.setIcon(settingsIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
         this.setForeground(SystemColors.getTextColor());
@@ -46,4 +46,6 @@ public class SettingsMenuOption extends JMenu implements BarElementsSettings{
         changeBackgroundColorSettings.addActionListener(e->changeBackgroundColor());
         changeTextColorSettings.addActionListener(e->changeTextColor());
     }
+
+
 }

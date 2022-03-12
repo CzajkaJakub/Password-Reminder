@@ -43,7 +43,6 @@ public class BarFunctions {
     public static void changeProfileImage(UserData data) {
 
         JFileChooser imageChooser = new JFileChooser();
-        imageChooser.setCurrentDirectory(new File("C://"));
         int response = imageChooser.showOpenDialog(null);
 
         if(response == JFileChooser.APPROVE_OPTION){

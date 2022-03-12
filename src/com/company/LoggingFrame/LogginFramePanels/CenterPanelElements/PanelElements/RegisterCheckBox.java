@@ -6,6 +6,7 @@ import com.company.GlobalSettings.FontSettings;
 import com.company.ColorSystem.SystemColors;
 
 
+import javax.print.attribute.standard.ColorSupported;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -18,8 +19,8 @@ public class RegisterCheckBox extends JCheckBox implements LoggingFrameSettings,
 
     private int registerMarked = 0;
 
-    int checkBoxWidth = 275;
-    int checkBoxHeight = 100;
+    int checkBoxWidth = 265;
+    int checkBoxHeight = 80;
 
 
     public RegisterCheckBox(String text){
@@ -32,6 +33,7 @@ public class RegisterCheckBox extends JCheckBox implements LoggingFrameSettings,
         this.setIcon(registerNoIcon);
         this.setFocusable(false);
         this.addMouseListener(this);
+        this.setBorder(BorderFactory.createMatteBorder(20, 0, 0, 0, SystemColors.getBackgroundColor()));
     }
 
 
@@ -64,7 +66,7 @@ public class RegisterCheckBox extends JCheckBox implements LoggingFrameSettings,
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        this.setForeground(Color.green);
+
     }
 
     @Override

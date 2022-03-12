@@ -23,11 +23,14 @@ public class LoggingField extends JTextField implements FontSettings, TextFieldS
         this.setForeground(SystemColors.getTextColor());
         this.setCaretColor(SystemColors.getTextColor());
         this.addMouseListener(this);
+        this.setFocusable(false);
+
     }
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
     }
 
     @Override
@@ -35,6 +38,8 @@ public class LoggingField extends JTextField implements FontSettings, TextFieldS
         if(cleared == 0){
             cleared = 1;
             this.setText("");
+            this.setFocusable(true);
+            this.grabFocus();
         }
     }
 

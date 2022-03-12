@@ -2,8 +2,10 @@ package com.company.UserFrame.UserFrame;
 
 import com.company.ColorSystem.SystemColors;
 import com.company.GlobalSettings.FrameSettings;
+import com.company.UserFrame.MenuBar.BarFunctions;
 import com.company.UserFrame.MenuBar.MenuBar;
 import com.company.UserFrame.Panels.CenterPanel;
+import com.company.UserFrame.Panels.CenterPanels.ProfilePanel.CenterUserPanel;
 import com.company.UserFrame.Panels.SouthUserPanel;
 import com.company.UserFrame.UserDataSystem.SaveDataUser;
 import com.company.UserFrame.UserDataSystem.SaveLoginData;
@@ -15,6 +17,8 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import static com.company.Main.userFrame;
+
 
 public class UserFrame extends JFrame implements FrameSettings {
 
@@ -24,10 +28,9 @@ public class UserFrame extends JFrame implements FrameSettings {
 
     UserData userData;
 
-    int userPanelWidth = 900;
-    int loggingPanelHeight = 800;
+    int userPanelWidth = 1100;
+    int loggingPanelHeight = 900;
     String programTitle = "Password reminder - User panel: ";
-
 
 
     public UserFrame(String login, String password) {

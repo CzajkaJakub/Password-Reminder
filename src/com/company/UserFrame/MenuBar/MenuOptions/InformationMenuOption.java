@@ -21,6 +21,7 @@ public class InformationMenuOption extends JMenu implements BarElementsSettings 
         this.setText(fourthBarElement);
         this.setIcon(informationIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
+        this.setPreferredSize(new Dimension(200, 50));
         this.setForeground(SystemColors.getTextColor());
         this.add(aboutInformation);
     }
@@ -36,4 +37,5 @@ public class InformationMenuOption extends JMenu implements BarElementsSettings 
     public void addListeners() {
         aboutInformation.addActionListener(e-> InformationSystem.readInformationFromFile());
     }
+
 }

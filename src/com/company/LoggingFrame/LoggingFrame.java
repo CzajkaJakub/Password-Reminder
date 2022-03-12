@@ -15,19 +15,16 @@ public class LoggingFrame extends JFrame implements GlobalImages, FrameSettings,
     public CenterPanel centerPanel;
     public SouthPanel southPanel ;
 
-
     public LoggingFrame(){
         createPanels();
         frameSettings();
     }
-
 
     private void createPanels() {
         northPanel = new NorthPanel();
         centerPanel = new CenterPanel();
         southPanel = new SouthPanel();
     }
-
 
     private void frameSettings(){
         this.setDefaultCloseOperation(defaultOperationOnClose);

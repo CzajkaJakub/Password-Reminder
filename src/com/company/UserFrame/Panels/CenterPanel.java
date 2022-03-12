@@ -19,8 +19,8 @@ public class CenterPanel extends JLayeredPane {
         this.setBackground(SystemColors.getBackgroundColor());
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 2000, 30));
         this.setOpaque(true);
-        this.add(new ImageLabel(passwordReminderWelcomePanel));
-        this.add(new ImageLabel(lockIcon));
+        this.add(new ImageLabel(passwordReminderImage));
+        this.add(new ImageLabel(lockImage));
     }
 
 

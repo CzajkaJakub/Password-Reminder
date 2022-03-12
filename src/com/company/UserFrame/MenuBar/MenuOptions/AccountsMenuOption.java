@@ -37,6 +37,7 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
     }
 
     public void barSettings() {
+        this.setPreferredSize(new Dimension(200, 50));
         this.setText(firstBarElement);
         this.setIcon(accountsIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
@@ -54,4 +55,5 @@ public class AccountsMenuOption extends JMenu implements BarElementsSettings {
         changePasswordAccount.addActionListener(e-> BarFunctions.changePasswordOfYourAccounts(data));
         showAccount.addActionListener(e-> BarFunctions.showAllAccounts(data));
     }
+
 }

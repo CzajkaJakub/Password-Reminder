@@ -4,9 +4,9 @@ import javax.swing.*;
 
 public interface LoggingFrameSettings {
 
-    int minimumWindowWidth = 900;
+    int minimumWindowWidth = 1000;
     int minimumWindowHeight = 800;
-    String frameTitle = "Password Reminder";
+    String frameTitle = "Password Reminder - logging panel";
 
     ImageIcon logInImage = new ImageIcon("resources/Images/Description/logIn.png");
     ImageIcon registerImage = new ImageIcon("resources/Images/Description/register.png");

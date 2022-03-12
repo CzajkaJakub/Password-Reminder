@@ -9,6 +9,6 @@ public interface LoggingPanelSettings {
 
     String loginFieldText = "Login";
     String passwordFieldText = "Password";
-    String registerBoxText = "Registration";
+    String registerBoxText = " Registration";
 
 }

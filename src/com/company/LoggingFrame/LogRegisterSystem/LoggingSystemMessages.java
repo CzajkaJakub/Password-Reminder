@@ -4,12 +4,6 @@ import javax.swing.*;
 
 public class LoggingSystemMessages {
 
-    public static void wrongPassword(){
-        JOptionPane.showMessageDialog(null,
-                "Typed password is wrong, please try again!",
-                "Wrong password!",
-                JOptionPane.WARNING_MESSAGE);
-    }
 
     public static void emptyField(){
         JOptionPane.showMessageDialog(null,
@@ -18,10 +12,11 @@ public class LoggingSystemMessages {
                 JOptionPane.WARNING_MESSAGE);
     }
 
-    public static void wrongUser(){
+
+    public static void wrongData() {
         JOptionPane.showMessageDialog(null,
-                "Typed user doesn't exist!",
-                "Wrong User!",
+                "Wrong data, please try again!",
+                "Wrong Data!",
                 JOptionPane.WARNING_MESSAGE);
     }
 }

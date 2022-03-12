@@ -27,15 +27,11 @@ public class LoggingSystem {
     }
 
     private static void logInSystem(String login, String password){
-        if(SearchUserSystem.searchUserLogin(login)){
-            if(SearchUserSystem.searchUserPassword(password, login)) {
-                Main.destroyLoggingPanel();
-                Main.createUserPanel(login, password);
-            }else{
-                LoggingSystemMessages.wrongPassword();
-            }
+        if(SearchUserSystem.searchUser(login, password)){
+            Main.destroyLoggingPanel();
+            Main.createUserPanel(login, password);
         }else{
-            LoggingSystemMessages.wrongUser();
+            LoggingSystemMessages.wrongData();
         }
     }
 }

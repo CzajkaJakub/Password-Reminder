@@ -4,16 +4,9 @@ import java.io.File;
 
 public class SearchUserSystem {
 
-    protected static boolean searchUserLogin(String login){
-        String pth = "resources/register/" + login;
-        File user = new File(pth);
-        return user.exists();
-    }
-
-    protected static boolean searchUserPassword(String password, String login){
+    protected static boolean searchUser(String login, String password){
         String pth = "resources/register/" + login + "/" + password;
         File user = new File(pth);
         return user.exists();
     }
-
 }

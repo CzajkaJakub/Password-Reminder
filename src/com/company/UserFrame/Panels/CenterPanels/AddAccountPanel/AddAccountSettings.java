@@ -13,6 +13,6 @@ public interface AddAccountSettings {
     String firstTextField = "Unique name";
 
     String secondTextField = "Login";
-    String thirdTextField = " Password";
+    String thirdTextField = "Password";
     String buttonName = " Save an account";
 }

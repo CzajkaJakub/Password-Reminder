@@ -31,6 +31,7 @@ public class UserMenuOption extends JMenu implements BarElementsSettings {
     }
 
     public void barSettings() {
+        this.setPreferredSize(new Dimension(200, 50));
         this.setText(secondBarElement);
         this.setIcon(userIcon);
         this.setFont(new Font(fontType, fontStyle, fontSize));
@@ -44,4 +45,5 @@ public class UserMenuOption extends JMenu implements BarElementsSettings {
         profileUser.addActionListener(e-> BarFunctions.showProfilePanel(data));
         imageUser.addActionListener(e-> BarFunctions.changeProfileImage(data));
     }
+
 }
